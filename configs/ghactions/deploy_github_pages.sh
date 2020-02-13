@@ -11,8 +11,8 @@ fi;
 cd reposense-report
 
 git init
-git config user.name 'Deployment Bot (Travis)'
-git config user.email 'deploy@travis-ci.org'
+git config user.name 'Deployment Bot (GitHub)'
+git config user.email 'deploy@github.com'
 git config core.sshCommand "ssh -i ~/id_git -F /dev/null"
 
 if [ -z "$GITHUB_TOKEN" ]; then
