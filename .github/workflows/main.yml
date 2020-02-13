@@ -15,4 +15,5 @@ jobs:
       run: |
         ./get-reposense.py --release
         java -jar RepoSense.jar --config ./configs --since 21/10/2017 --until 21/11/2019 --formats java adoc js
+        export GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
         bash ./configs/travis/deploy_github_pages.sh
