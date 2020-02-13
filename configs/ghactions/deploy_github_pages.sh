@@ -44,5 +44,5 @@ if changes=$(git status --porcelain) && [ -z "$changes" ]; then
 fi
 
 git add -A .
-git commit -m "Rebuild pages at ${TRAVIS_COMMIT}"
+git commit -m "Rebuild pages at ${GITHUB_SHA}"
 git push --quiet upstream HEAD:gh-pages
