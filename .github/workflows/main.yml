@@ -15,7 +15,7 @@ jobs:
       run: ./get-reposense.py --release
     - name: Generate report
       run: java -jar RepoSense.jar --config ./configs --since 21/10/2017 --until 21/11/2019 --formats java adoc js
-    - name: Deploy Github Pages
+    - name: Deploy GitHub pages
       run: |
         export GITHUB_TOKEN=${{ secrets.MY_TOKEN }}
         bash ./configs/ghactions/deploy_github_pages.sh
