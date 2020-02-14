@@ -4,7 +4,7 @@
 set -o errexit # exit with nonzero exit code if any line fails
 
 if [ -z "$GITHUB_TOKEN" ] && [ -z "$GITHUB_DEPLOY_KEY" ]; then
-  echo 'GITHUB_TOKEN or GITHUB_DEPLOY_KEY is not set up in Travis. Skipping deploy.'
+  echo 'ACCESS_TOKEN or DEPLOY_KEY is not set up in secrets. Skipping deploy.'
   exit 0
 fi;
 
