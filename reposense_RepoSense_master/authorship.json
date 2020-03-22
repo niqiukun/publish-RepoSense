@@ -6354,42 +6354,42 @@
       {
         "lineNumber": 19,
         "author": {
-          "gitId": "yong24s"
+          "gitId": "-"
         },
         "content": "* [Using Travis-CI to automate publishing of the report to GitHub Pages](#using-travis-ci-to-automate-publishing-of-the-report-to-github-pages)"
       },
       {
         "lineNumber": 20,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "* [FAQ](#faq)"
       },
       {
         "lineNumber": 21,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 22,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 23,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": "## Getting Started"
       },
       {
         "lineNumber": 24,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -6417,7 +6417,7 @@
       {
         "lineNumber": 28,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -6431,7 +6431,7 @@
       {
         "lineNumber": 30,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -6487,7 +6487,7 @@
       {
         "lineNumber": 38,
         "author": {
-          "gitId": "yong24s"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -6522,7 +6522,7 @@
       {
         "lineNumber": 43,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -6536,14 +6536,14 @@
       {
         "lineNumber": 45,
         "author": {
-          "gitId": "yong24s"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 46,
         "author": {
-          "gitId": "yong24s"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -6585,7 +6585,7 @@
       {
         "lineNumber": 52,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -6683,7 +6683,7 @@
       {
         "lineNumber": 66,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -6767,7 +6767,7 @@
       {
         "lineNumber": 78,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -6795,7 +6795,7 @@
       {
         "lineNumber": 82,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -6816,7 +6816,7 @@
       {
         "lineNumber": 85,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -6893,14 +6893,14 @@
       {
         "lineNumber": 96,
         "author": {
-          "gitId": "yong24s"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 97,
         "author": {
-          "gitId": "ongspxm"
+          "gitId": "-"
         },
         "content": "### Commits Panel"
       },
@@ -6914,7 +6914,7 @@
       {
         "lineNumber": 99,
         "author": {
-          "gitId": "ongspxm"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -6956,14 +6956,14 @@
       {
         "lineNumber": 105,
         "author": {
-          "gitId": "ongspxm"
+          "gitId": "-"
         },
         "content": "* The date range for the `Chart Panel` can be updated by clicking on the \"Show ramp chart for this period\" below the name of the author."
       },
       {
         "lineNumber": 106,
         "author": {
-          "gitId": "ongspxm"
+          "gitId": "-"
         },
         "content": "* The ramp slices displayed in the ramp chart for the `Commits Panel` represents individual commits."
       },
@@ -6977,7 +6977,7 @@
       {
         "lineNumber": 108,
         "author": {
-          "gitId": "yong24s"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -7299,7 +7299,7 @@
       {
         "lineNumber": 154,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": "* which git and GitHub usernames belong to which authors"
       },
@@ -7320,7 +7320,7 @@
       {
         "lineNumber": 157,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": "To use this feature, add a `_reposense/config.json` to the root of your repo using the format in the example below ([another example](../_reposense/config.json)) and **commit it** (reason: RepoSense can see committed code only):"
       },
@@ -7390,7 +7390,7 @@
       {
         "lineNumber": 167,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": "      \"emails\": [\"alice@example.com\", \"alicet@example.com\"],"
       },
@@ -7537,14 +7537,14 @@
       {
         "lineNumber": 188,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": "* `githubId`: GitHub username of the author. :exclamation: Mandatory field."
       },
       {
         "lineNumber": 189,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": "* `emails`: Associated GitHub emails of the author. This can be found in your [GitHub settings](https://github.com/settings/emails)."
       },
@@ -7656,7 +7656,7 @@
       {
         "lineNumber": 205,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": "Author: ConfiguredAuthorName \u003cauthor@example.com\u003e"
       },
@@ -7677,7 +7677,7 @@
       {
         "lineNumber": 208,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": "    Make some changes to show my new author\u0027s name"
       },
@@ -7698,7 +7698,7 @@
       {
         "lineNumber": 211,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": "Author: ActualGitHubId \u003cauthor@example.com\u003e"
       },
@@ -7719,7 +7719,7 @@
       {
         "lineNumber": 214,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": "    Initial commit"
       },
@@ -7740,70 +7740,70 @@
       {
         "lineNumber": 217,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "`ActualGitHubId` and `ConfiguredAuthorName` are both `Git Author Name` of the same author.\u003cbr\u003e"
       },
       {
         "lineNumber": 218,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "To find the author name that you are currently using for your current git repository, run the following command within your git repository:"
       },
       {
         "lineNumber": 219,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "```"
       },
       {
         "lineNumber": 220,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "git config user.name"
       },
       {
         "lineNumber": 221,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "```"
       },
       {
         "lineNumber": 222,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "To set the author name to the value you want (e.g., to set it to your GitHub username) for your current git repository, you can use the following command ([more info](https://www.git-tower.com/learn/git/faq/change-author-name-email)):"
       },
       {
         "lineNumber": 223,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "```"
       },
       {
         "lineNumber": 224,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "git config user.name \"YOUR_AUTHOR_NAME”"
       },
       {
         "lineNumber": 225,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "```"
       },
       {
         "lineNumber": 226,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "To set the author name to use a default value you want for future git repositories, you can use the following command:"
       },
@@ -7845,14 +7845,14 @@
       {
         "lineNumber": 232,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "\u003e Note: Symbols such as `\"`, `!`, `/` etc. in your author name will be omitted, which may reduce the accuracy of the analysis if 2 names in the repository are approximately similar."
       },
       {
         "lineNumber": 233,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -7957,7 +7957,7 @@
       {
         "lineNumber": 248,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": "Special thanks to [Collate](https://github.com/se-edu/collate) for providing the inspiration for this functionality."
       },
@@ -7971,7 +7971,7 @@
       {
         "lineNumber": 250,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": "Note: Remember to **commit** the files after the changes. (reason: RepoSense can see committed code only)"
       },
@@ -8153,7 +8153,7 @@
       {
         "lineNumber": 276,
         "author": {
-          "gitId": "jamessspanggg"
+          "gitId": "-"
         },
         "content": "* **`--until, -u END_DATE`**: The end date of analysis (`-u` as alias). The analysis includes the end date. Format: `DD/MM/YYYY`\u003cbr\u003e"
       },
@@ -8314,7 +8314,7 @@
       {
         "lineNumber": 299,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -8349,7 +8349,7 @@
       {
         "lineNumber": 304,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -8363,7 +8363,7 @@
       {
         "lineNumber": 306,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -8391,7 +8391,7 @@
       {
         "lineNumber": 310,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": ""
       },
@@ -8636,7 +8636,7 @@
       {
         "lineNumber": 345,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": "[Optional] Author\u0027s Emails\u003csup\u003e*\u003c/sup\u003e | Associated Github emails of the author. This can be found in your [GitHub settings](https://github.com/settings/emails)."
       },
@@ -8699,7 +8699,7 @@
       {
         "lineNumber": 354,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "If `author-config.csv` is not given and the repo has not provide author details in a standalone config file, all the authors of the repositories within the date range specified (if any) will be analyzed."
       },
@@ -8923,49 +8923,49 @@
       {
         "lineNumber": 386,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 387,
         "author": {
-          "gitId": "yong24s"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 388,
         "author": {
-          "gitId": "yong24s"
+          "gitId": "-"
         },
         "content": "## Using Travis-CI to automate publishing of the report to GitHub Pages"
       },
       {
         "lineNumber": 389,
         "author": {
-          "gitId": "yong24s"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 390,
         "author": {
-          "gitId": "yong24s"
+          "gitId": "-"
         },
         "content": "Follow this [guide](PublishingGuide.md) to automate publishing of your report to GitHub Pages."
       },
       {
         "lineNumber": 391,
         "author": {
-          "gitId": "yong24s"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 392,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "## FAQ"
       },
@@ -8979,140 +8979,140 @@
       {
         "lineNumber": 394,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "#### Q: Does RepoSense work on private repositories?"
       },
       {
         "lineNumber": 395,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "**A:** *RepoSense* will first clone the git repository to be analyzed, thus if you do not have access to the repository, we are unable to run the analysis.\u003cbr\u003e"
       },
       {
         "lineNumber": 396,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "To enable *RepoSense* to work on private repositories, ensure that you have enabled access to your private repository in your git terminal first, before running the analysis."
       },
       {
         "lineNumber": 397,
         "author": {
-          "gitId": "eugenepeh"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 398,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "#### Q: How does formats work?"
       },
       {
         "lineNumber": 399,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "**A:** **Formats** are the [file extensions](https://techterms.com/definition/fileextension), which is the **suffix** at the end of a filename that indicates what type of file it is.\u003cbr\u003e"
       },
       {
         "lineNumber": 400,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "The formats/file extensions to be analyzed by *RepoSense* can be specified through the [standalone config file](#provide-data-using-a-json-config-file), [repo-config file](#repo-configcsv) and [command line](#customize-using-command-line-parameters)."
       },
       {
         "lineNumber": 401,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 402,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "#### Q: How does ignore glob list work?"
       },
       {
         "lineNumber": 403,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "**A:** [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is the pattern to specify a set of filenames with [wildcard characters](https://www.computerhope.com/jargon/w/wildcard.htm). **Ignore glob list** is the list of patterns to specify all the files in the repository which should be ignored from analysis.\u003cbr\u003e"
       },
       {
         "lineNumber": 404,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "The ignore glob list can be specified through the [standalone config file](#provide-data-using-a-json-config-file), [repo-config file](#repo-configcsv) and [author-config file](#author-configcsv)."
       },
       {
         "lineNumber": 405,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 406,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "#### Q: My commit contributions does not appear in the ramp chart (despite appearing in the contribution bar and code panel)?"
       },
       {
         "lineNumber": 407,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "**A:** This is probably a case of giving an incorrect author name alias (or github ID) in your [author-config file](#author-configcsv).\u003cbr\u003e"
       },
       {
         "lineNumber": 408,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "Please refer to [A Note About Git Author Name](#a-note-about-git-author-name) above on how to find out the correct author name you are using, and how to change it.\u003cbr\u003e"
       },
       {
         "lineNumber": 409,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "Also ensure that you have added all author name aliases that you may be using (if you are using multiple computers or have previously changed your author name).\u003cbr\u003e"
       },
       {
         "lineNumber": 410,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "Alternatively, you may choose to configure RepoSense to track using your GitHub email instead in your [standalone config file](#provide-data-using-a-json-config-file) or [author-config file](#author-configcsv), which is more accurate compared to author name aliases. The associated GitHub email you are using can be found in your [GitHub settings](https://github.com/settings/emails)."
       },
       {
         "lineNumber": 411,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 412,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "#### Q: My contribution bar and code panel is empty (despite having lots of commit contributions in the ramp chart)?"
       },
       {
         "lineNumber": 413,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "**A:** The contribution bar and code panel records the lines you have authored to the **latest** commit of the repository and branch you are analyzing. As such, it is possible that while you have lots of commit contributions, your final authorship contribution is low if you have only deleted lines, someone else have overwritten your code and taken authorship for it (currently, *RepoSense* does not have functionality to track overwritten lines).\u003cbr\u003e"
       },
@@ -9126,42 +9126,42 @@
       {
         "lineNumber": 415,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 416,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "#### Q: I have added/edited the standalone config file in my local repository, but RepoSense is not using it when running the analysis?"
       },
       {
         "lineNumber": 417,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "**A:** Ensure that you have committed the changes to your standalone config file first before running the analysis, as *RepoSense* is unable to detect uncommitted changes to your local repository."
       },
       {
         "lineNumber": 418,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": ""
       },
       {
         "lineNumber": 419,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "#### Q: I am able to run RepoSense on my repository on a Linux/Mac OS, but it fails on a Windows OS?"
       },
       {
         "lineNumber": 420,
         "author": {
-          "gitId": "yamidark"
+          "gitId": "-"
         },
         "content": "**A:** It is possible you may have some file names with [special characters](https://docs.microsoft.com/en-us/windows/desktop/FileIO/naming-a-file#naming-conventions) in them, which is disallowed in Windows OS. As such, *RepoSense* is unable to fully clone your repository, thus failing the analysis."
       },
@@ -9188,12 +9188,9 @@
       }
     ],
     "authorContributionMap": {
-      "ongspxm": 5,
-      "jamessspanggg": 1,
-      "yong24s": 11,
-      "yamidark": 40,
-      "eugenepeh": 36,
-      "-": 330
+      "ongspxm": 1,
+      "eugenepeh": 6,
+      "-": 416
     }
   },
   {
