@@ -1,32 +1,32 @@
-Mar 07, 2020 10:18:16 AM reposense.report.RepoCloner spawnCloneProcess
+Mar 22, 2020 12:26:16 PM reposense.report.RepoCloner spawnCloneProcess
 INFO: Cloning in parallel from https://github.com/reposense/RepoSense.git...
-Mar 07, 2020 10:18:16 AM reposense.report.RepoCloner waitForCloneProcess
+Mar 22, 2020 12:26:16 PM reposense.report.RepoCloner waitForCloneProcess
 INFO: Waiting for cloning of https://github.com/reposense/RepoSense.git to complete...
-Mar 07, 2020 10:18:18 AM reposense.report.RepoCloner waitForCloneProcess
+Mar 22, 2020 12:26:18 PM reposense.report.RepoCloner waitForCloneProcess
 INFO: Cloning of https://github.com/reposense/RepoSense.git completed!
-Mar 07, 2020 10:18:18 AM reposense.report.RepoCloner spawnCloneProcess
+Mar 22, 2020 12:26:18 PM reposense.report.RepoCloner spawnCloneProcess
 INFO: Cloning in parallel from https://github.com/se-edu/collate.git...
-Mar 07, 2020 10:18:18 AM reposense.report.ReportGenerator analyzeRepos
+Mar 22, 2020 12:26:18 PM reposense.report.ReportGenerator analyzeRepos
 INFO: [1/2] Analyzing https://github.com/reposense/RepoSense.git (master)...
-Mar 07, 2020 10:18:18 AM reposense.commits.CommitInfoExtractor extractCommitInfos
+Mar 22, 2020 12:26:18 PM reposense.commits.CommitInfoExtractor extractCommitInfos
 INFO: Extracting commits info for https://github.com/reposense/RepoSense.git (master)...
-Mar 07, 2020 10:18:19 AM reposense.commits.CommitInfoAnalyzer analyzeCommits
+Mar 22, 2020 12:26:18 PM reposense.commits.CommitInfoAnalyzer analyzeCommits
 INFO: Analyzing commits info for https://github.com/reposense/RepoSense.git (master)...
-Mar 07, 2020 10:18:19 AM reposense.authorship.FileInfoExtractor extractFileInfos
+Mar 22, 2020 12:26:19 PM reposense.authorship.FileInfoExtractor extractFileInfos
 INFO: Extracting relevant file info from https://github.com/reposense/RepoSense.git (master)...
-Mar 07, 2020 10:18:23 AM reposense.report.ReportGenerator analyzeRepo
+Mar 22, 2020 12:26:23 PM reposense.report.ReportGenerator analyzeRepo
 INFO: Analysis of https://github.com/reposense/RepoSense.git (master) completed!
-Mar 07, 2020 10:18:23 AM reposense.report.RepoCloner waitForCloneProcess
+Mar 22, 2020 12:26:23 PM reposense.report.RepoCloner waitForCloneProcess
 INFO: Waiting for cloning of https://github.com/se-edu/collate.git to complete...
-Mar 07, 2020 10:18:23 AM reposense.report.RepoCloner waitForCloneProcess
+Mar 22, 2020 12:26:23 PM reposense.report.RepoCloner waitForCloneProcess
 INFO: Cloning of https://github.com/se-edu/collate.git completed!
-Mar 07, 2020 10:18:23 AM reposense.report.ReportGenerator analyzeRepos
+Mar 22, 2020 12:26:23 PM reposense.report.ReportGenerator analyzeRepos
 INFO: [2/2] Analyzing https://github.com/se-edu/collate.git (master)...
-Mar 07, 2020 10:18:23 AM reposense.report.ReportGenerator updateRepoConfig
+Mar 22, 2020 12:26:23 PM reposense.report.ReportGenerator updateRepoConfig
 INFO: https://github.com/se-edu/collate.git (master) does not contain a standalone config file.
-Mar 07, 2020 10:18:23 AM reposense.report.ReportGenerator updateAuthorList
+Mar 22, 2020 12:26:23 PM reposense.report.ReportGenerator updateAuthorList
 INFO: https://github.com/se-edu/collate.git (master) has no authors specified, using all authors by default.
-Mar 07, 2020 10:18:23 AM reposense.report.ReportGenerator analyzeRepos
+Mar 22, 2020 12:26:23 PM reposense.report.ReportGenerator analyzeRepos
 WARNING: No authors found with commits for https://github.com/se-edu/collate.git (master).
-Mar 07, 2020 10:18:23 AM reposense.report.ReportGenerator generateReposReport
+Mar 22, 2020 12:26:23 PM reposense.report.ReportGenerator generateReposReport
 INFO: The report is generated at /home/travis/build/niqiukun/publish-RepoSense/reposense-report

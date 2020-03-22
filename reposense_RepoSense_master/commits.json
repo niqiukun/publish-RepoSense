@@ -30,58 +30,58 @@
         ]
       },
       {
-        "insertions": 30,
-        "deletions": 713,
+        "insertions": 25,
+        "deletions": 708,
         "date": "2018-07-19",
         "commitResults": [
           {
             "hash": "a3e23775486d350afd80af7b5d40c5c89d84d5a2",
             "messageTitle": "Remove generated template files from source code (#195)",
             "messageBody": "Since the dashboard revamp in v1.1, `template` no longer contains the\r\nsource of the dashboard. Instead, the source files are contained in\r\n`frontend/src`, andcompiled into the corresponding `html` and `css`\r\nfiles.\r\n\r\nAs good practice, these generated template files shouldn\u0027t be track.\r\nLet\u0027s include the generation of all these template files in the gradle\r\nbuild process instead.",
-            "insertions": 17,
-            "deletions": 695
+            "insertions": 14,
+            "deletions": 692
           },
           {
             "hash": "12ab8fafabc9745aed7ca28c5b12d64fa1806e16",
             "messageTitle": "[#197, #201] Fix ramp chart positioning (#198)",
             "messageBody": "When the dashboard loads two projects of different date range, some of\r\nthe dashboard attributes will be messed up and this affects the\r\nrendering of the ramp charts.\r\n\r\nMore specifically, the `sliceWidth` and `sliceCount` will be affected\r\nby the date range and will cause the dashboard to incorrectly \"thinks\"\r\nthat it has more slices then it actually does, and hence causing it to\r\nbe incorrectly displayed squashed up together.\r\n\r\nLet\u0027s remove the attributes in `v_summary` and generate the width and\r\nposition of the slices from the actual array of slices instead.",
-            "insertions": 13,
-            "deletions": 18
+            "insertions": 11,
+            "deletions": 16
           }
         ]
       },
       {
-        "insertions": 21,
-        "deletions": 22,
+        "insertions": 10,
+        "deletions": 4,
         "date": "2018-07-20",
         "commitResults": [
           {
             "hash": "0d7046fbac81d00491e4e6325007840820d01d5a",
             "messageTitle": "Dashboard: remove navigation bar (#171)",
             "messageBody": "After the removal of the feature to support multiple reports, the\r\nnavigation bar contains only the reposense logo.\r\n\r\nThe bar now plays only an aesthetic role and has no functional purpose,\r\nwhich is a waste of vertical space.\r\n\r\nSimilarly the filters on the summary tab could be more concisely\r\ndisplayed to fully utilize the vertical space.\r\n\r\nLet\u0027s make the necessary UI changes to improve vertical space usage.",
-            "insertions": 13,
-            "deletions": 16
+            "insertions": 5,
+            "deletions": 1
           },
           {
             "hash": "a3c6bccff3a344f78b0d66a68cab517cf5e908ff",
             "messageTitle": "[#156] Dashboard: synchronize code panel display name (#164)",
             "messageBody": "The dashboard\u0027s overview displays the DisplayName as specified in the CSV\r\nconfig file while the side panel displays the gitHub ID instead.\r\n\r\nThis may cause confusion to users as the display name and for overview and the\r\nside panel is different.\r\n\r\nLet\u0027s update the code panel to show the the same display name as overview.",
-            "insertions": 8,
-            "deletions": 6
+            "insertions": 5,
+            "deletions": 3
           }
         ]
       },
       {
-        "insertions": 17,
-        "deletions": 26,
+        "insertions": 12,
+        "deletions": 23,
         "date": "2018-07-25",
         "commitResults": [
           {
             "hash": "7f2e2e6d1eeca62c5173cfc07124a145829e8ea8",
             "messageTitle": "[#214] Fix code panel not showing the correct files (#168)",
             "messageBody": "When switching to display another author\u0027s code contribution, some of\r\nthe code panel\u0027s ui elements continue to display old data.\r\n\r\nTo prevent that from happening, let\u0027s tag the `v_authorship` module\r\nwith a key which forces vue to re-render `v_summary` as a new instance\r\nwith a fresh set of data.",
-            "insertions": 17,
-            "deletions": 26
+            "insertions": 12,
+            "deletions": 23
           }
         ]
       },
@@ -107,16 +107,16 @@
         ]
       },
       {
-        "insertions": 75,
-        "deletions": 36,
+        "insertions": 70,
+        "deletions": 33,
         "date": "2018-07-30",
         "commitResults": [
           {
             "hash": "ea6c774283b3b6b97a74c1d62bbad6252cce80e8",
             "messageTitle": "[#224] Dashboard: restore view state using query parameters (#160)",
             "messageBody": "The summary dashboard plays an important role in highlighting and\r\nfiltering the report data to provide the most relevant view for the\r\nusers.\r\n\r\nPermalinks was a feature implemented in the previous dashboard that\r\nenables the users to quickly save the state of the dashboard to quickly\r\nreturn to it when needed.\r\n\r\nWhile useful, this feature was not core to the usage of the dashboard,\r\nhence left out during the feature for feature reimplementation during\r\nthe dashboard structural changes.\r\n\r\nLets implement this permalink feature in the main vue module. New\r\nfields will be emitted from their individual modules into the global\r\nobject.\r\n\r\nThe summary module will read the information from the global object\r\nthen load the filtered view accordingly.\r\n\r\nImplementing it in the main modules also provides us the option of\r\nopening up other modules for the permalink features if needed in the\r\nfuture.",
-            "insertions": 70,
-            "deletions": 35
+            "insertions": 65,
+            "deletions": 32
           },
           {
             "hash": "dec51805c60b3b7f204f296456e098047aceb9da",
@@ -149,20 +149,6 @@
         ]
       },
       {
-        "insertions": 1,
-        "deletions": 0,
-        "date": "2018-08-01",
-        "commitResults": [
-          {
-            "hash": "0c62640e96cb022235db0a362d8c5bc0bdb2a209",
-            "messageTitle": "[#189] Dashboard: fix ramps z-index value (#255)",
-            "messageBody": "Ramps representing very huge commits will be rendered as a very\r\nhumongous triangle. This display blocks up the commits in the earlier\r\nperiods, hence causing them to be unclickable.\r\n\r\nTo fix this, let\u0027s render the ramps such that the earlier ramps will\r\nhave a larger z-index value to place it on top of the more recent\r\nramps. This ensures that users will be able to interact with all the\r\nramps.",
-            "insertions": 1,
-            "deletions": 0
-          }
-        ]
-      },
-      {
         "insertions": 3,
         "deletions": 3,
         "date": "2018-08-02",
@@ -191,51 +177,44 @@
         ]
       },
       {
-        "insertions": 23,
-        "deletions": 28,
+        "insertions": 16,
+        "deletions": 22,
         "date": "2018-08-09",
         "commitResults": [
           {
             "hash": "14a7e76b0930b01457c758d5d41c127c743596dd",
             "messageTitle": "[#264] Code view: add total number of lines contributed for each file (#282)",
             "messageBody": "Code panel could use more useful information such as number of lines\r\ncontributed for each file. This would give the reviewer a rough idea\r\nhow many lines the author has contributed to each component.\r\n\r\nLet\u0027s add the line of code information into the display.",
-            "insertions": 12,
-            "deletions": 2
+            "insertions": 9,
+            "deletions": 1
           },
           {
             "hash": "5aa0913a3a68cfa5f20f7ed502a2efca8785b75b",
             "messageTitle": "[#270] Dashboard: remove unused tabs bar in the code view (#285)",
             "messageBody": "Code view only has a single page, which makes the addition of tabs bar\r\nserves no purpose at this stage\r\n\r\nLet\u0027s remove it since its not in used.",
             "insertions": 0,
-            "deletions": 17
+            "deletions": 13
           },
           {
             "hash": "6cde620ac379109f7f0b93498d29c1cfd221a68f",
             "messageTitle": "[#259] Dashboard: add an indicator to code view (#287)",
             "messageBody": "New users may not know all the functionalities that are available to\r\nthem, hence hidden functionalities such as code view may go unnoticed.\r\n\r\nTo enhance our user friendliness, let\u0027s add a tool-tip and icon to the\r\nramp chart title so that the code view feature stands out more\r\nintuitively.",
-            "insertions": 10,
-            "deletions": 9
-          },
-          {
-            "hash": "c20e0217ed22e8cece0644e4660c83cf6a2c4343",
-            "messageTitle": "Dashboard: add indication to empty state in code view #291",
-            "messageBody": "Code view lacks a empty state. This creates a confusion as there is no\r\nvisualization change between the loading and loaded stage for empty\r\ndata.\r\n\r\nLet\u0027s add a message to indicate the loading has completed in the event\r\nwhere there is nothing to show.",
-            "insertions": 1,
-            "deletions": 0
+            "insertions": 7,
+            "deletions": 8
           }
         ]
       },
       {
-        "insertions": 33,
-        "deletions": 25,
+        "insertions": 13,
+        "deletions": 6,
         "date": "2018-08-11",
         "commitResults": [
           {
             "hash": "d22164265ca71046dbcfefc1f853f098ee82dbba",
             "messageTitle": "[#258] Dashboard: optimize settings bar to fit various screen sizes (#286)",
             "messageBody": "Settings bar does not degrade gracefully for smaller screen sizes.\r\n\r\nThis make the ui looks disorganized and messy.\r\n\r\nLet\u0027s readjust the font size, grouping and margin to make the settings\r\nbar looks neater.",
-            "insertions": 33,
-            "deletions": 25
+            "insertions": 13,
+            "deletions": 6
           }
         ]
       },
@@ -254,16 +233,16 @@
         ]
       },
       {
-        "insertions": 100,
-        "deletions": 120,
+        "insertions": 93,
+        "deletions": 113,
         "date": "2018-08-16",
         "commitResults": [
           {
             "hash": "623a6a7a386a3e566107a79539f6f63fcf34578a",
             "messageTitle": "[#289] Code view: tweak code packing algorithm (#292)",
             "messageBody": "Untouched code segments that are smaller than minimum lines are\r\ndisplayed together with the touched code. This distorts the truth as\r\nthese code do not belong to the author and may lead to unnecessary\r\ndisputes.\r\n\r\nLet\u0027s encapsulate untouched code in the expand box only if \u003e5 lines but\r\nstill differentiate them using color irregardless.",
-            "insertions": 100,
-            "deletions": 120
+            "insertions": 93,
+            "deletions": 113
           }
         ]
       },
@@ -282,44 +261,44 @@
         ]
       },
       {
-        "insertions": 8,
-        "deletions": 11,
+        "insertions": 3,
+        "deletions": 10,
         "date": "2018-09-06",
         "commitResults": [
           {
             "hash": "7af8404c7634fcc92bdbf363380411c7cb0068ab",
             "messageTitle": "[#321] Dashboard: add landing page link in footer (#326)",
             "messageBody": "Dashboard footer displays only the generated timestamp.\r\n\r\nThis does not credit RepoSense in anyway, also user may not know how to\r\nuse the dashboard.\r\n\r\nLet\u0027s include a link to direct user to RepoSense landing page.",
-            "insertions": 8,
-            "deletions": 11
+            "insertions": 3,
+            "deletions": 10
           }
         ]
       },
       {
-        "insertions": 18,
-        "deletions": 6,
+        "insertions": 16,
+        "deletions": 4,
         "date": "2018-10-03",
         "commitResults": [
           {
             "hash": "6a45e4f493956f45dc3658138845b5ee80971b35",
             "messageTitle": "[#336] Dashboard crashes when modify date to be out of range (#339)",
             "messageBody": "When we try to modify the date of the Since or Until filter in the\r\ndashboard, if the date specified is out of range, like setting year\r\n2020 for until date, or any year for the since date (since typing the\r\n1st number will set it to be that year 1st), the dashboard will hang,\r\nand 66crash.\r\n\r\nLet\u0027s fix this by adding a validation check, to ensure that the\r\nfilter dates are within the analysis date range.",
-            "insertions": 18,
-            "deletions": 6
+            "insertions": 16,
+            "deletions": 4
           }
         ]
       },
       {
-        "insertions": 19,
-        "deletions": 5,
+        "insertions": 15,
+        "deletions": 3,
         "date": "2018-10-14",
         "commitResults": [
           {
             "hash": "adec166ee3347f68c0e8fb169e18b19dc375e26c",
             "messageTitle": "[#358] Report#datepicker: default value not filled on initial load (#359)",
             "messageBody": "The date picker does not display the date range of summary view on\r\nload.\r\n\r\nLet\u0027s obtain the date picker value from the hash param if provided,\r\notherwise, set it to be the minimum and maximum dates of the generated\r\nreport by default.",
-            "insertions": 19,
-            "deletions": 5
+            "insertions": 15,
+            "deletions": 3
           }
         ]
       },
@@ -338,16 +317,16 @@
         ]
       },
       {
-        "insertions": 4,
-        "deletions": 1,
+        "insertions": 3,
+        "deletions": 0,
         "date": "2019-01-22",
         "commitResults": [
           {
             "hash": "1fe254b9f129339ae400d48f0cd868dbd0d6830c",
             "messageTitle": "[#373] Fix typing lag in the report search bar (#495)",
             "messageBody": "Typing in the report search bar seems to be a bit laggy on the\r\ndashboard-demo. Investigation reveals that lag is caused by the vue\r\nobject trying to rewrite the `v_model` on every keystroke.\r\n\r\nLet\u0027s update and trigger the search only when the typing is complete,\r\nie we will be updating the summary view as triggered by the `onchange`\r\nevent of the search filter `input`.",
-            "insertions": 4,
-            "deletions": 1
+            "insertions": 3,
+            "deletions": 0
           }
         ]
       },
@@ -366,16 +345,16 @@
         ]
       },
       {
-        "insertions": 162,
-        "deletions": 164,
+        "insertions": 132,
+        "deletions": 152,
         "date": "2019-02-08",
         "commitResults": [
           {
             "hash": "0fa163e163f63967545349bf921325915fc4c36e",
             "messageTitle": "[#468] Add per-commit granularity to the report (#500)",
             "messageBody": "The dashboard only allows summary view for daily and weekly\r\ngranularities.\r\n\r\nWhile the daily and weekly intervals give the reviewer the rough\r\nimpression of the authors\u0027 workload, it does not provide any insights\r\non the authors\u0027 commit frequency, commit organization and merged\r\nchanges. These information are important in helping users to further\r\nunderstand the authors\u0027 workflow and contribution.\r\n\r\nLet\u0027s implement summary view for per commit granularity. To do so,\r\nlet\u0027s update `commits.json` report to store the list of each\r\nCommitResult inside the daily interval contribution data, and update\r\nthe frontend implement the per commit granularity using this data.\r\n\r\nAs the weekly interval view is now generated on the frontend based\r\non the daily view by #129, there is no longer a need to store the\r\nweekly interval contribution data in commits.json.\r\n\r\nLet\u0027s also remove the weekly interval contribution data in\r\n`commits.json` report to reduce the size of the json files.\r\n",
-            "insertions": 162,
-            "deletions": 164
+            "insertions": 132,
+            "deletions": 152
           }
         ]
       },
@@ -408,16 +387,16 @@
         ]
       },
       {
-        "insertions": 43,
-        "deletions": 48,
+        "insertions": 33,
+        "deletions": 39,
         "date": "2019-03-13",
         "commitResults": [
           {
             "hash": "daaed304969cb9694e002f0fa4ff7b6a46d4215e",
             "messageTitle": "Refactor toolbar into v-authorship tab (#566)",
             "messageBody": "The toolbar for the \"expand/collapse all\" text is outside of the\r\nv-authorship tab.\r\n\r\nThis shouldn\u0027t be the case as it makes it difficult to extend and\r\ninclude other kinds of tabs.\r\n\r\nLet\u0027s shift the toolbar into the v-authorship tab, and make some\r\ncorresponding changes to how the toggle state is changed.\r\n\r\nThis will keep the toolbar within the authorship tab, which makes sense\r\nas the button is only relevant for the authorship tab. In light that we\r\nare going to have other kinds of tabs to extend the use of the side tab\r\nin the future.",
-            "insertions": 43,
-            "deletions": 48
+            "insertions": 33,
+            "deletions": 39
           }
         ]
       },
@@ -436,116 +415,487 @@
         ]
       },
       {
-        "insertions": 284,
-        "deletions": 360,
+        "insertions": 630,
+        "deletions": 65,
         "date": "2019-05-30",
         "commitResults": [
           {
             "hash": "a6b3cac11da8860c30eacafef8f3a488e9fc31f7",
             "messageTitle": "Report: Add zoom in feature for ramp charts (#573)",
             "messageBody": "The commit granularity setting for the ramp chart slice produces a ramp \r\nchart that may be too dense to reveal any substantial information. \r\n\r\nLet\u0027s add a side panel that provides a zoomed-in view of the ramp \r\nchart, selected based on a specified time frame.",
-            "insertions": 284,
-            "deletions": 360
+            "insertions": 630,
+            "deletions": 65
           }
         ]
       }
     ],
-    "AdityaA1998": [
+    "jamessspanggg": [
       {
-        "insertions": 227,
-        "deletions": 23,
-        "date": "2018-06-07",
+        "insertions": 2,
+        "deletions": 2,
+        "date": "2019-05-31",
         "commitResults": [
           {
-            "hash": "00e6e7972cf739a6889ecd6a18199e846387005f",
-            "messageTitle": "[#98] Implement a logger (#123)",
-            "messageBody": "Currently, all the unnecessary information - not concerning the user\r\nis being printed on console. \r\n\r\nLet\u0027s implement a logger to display only relevant information on the\r\nconsole and save the rest of it on an external log file. ",
-            "insertions": 227,
-            "deletions": 23
-          }
-        ]
-      },
-      {
-        "insertions": 1,
-        "deletions": 12,
-        "date": "2018-06-14",
-        "commitResults": [
-          {
-            "hash": "097ff3f7103b4f5bcfc662c55da3e805e3e8423d",
-            "messageTitle": "[#139] Clean up the logger output  (#145)",
-            "messageBody": "Currently, the logger shows a lot of extra information in console which\r\nmight not be useful for the user.\r\n\r\nLet\u0027s configure the logger to show only the useful information to the\r\nuser. ",
+            "hash": "3bbe5fccfc04aeb2742d814fef4fb8f534f3b55e",
+            "messageTitle": "[#672] Toolbar: set \u0027commit\u0027 as default for granularity (#684)",
+            "messageBody": "The default value of granularity is `Day`.\r\n\r\n`Commit` as granularity is more closer to reality because users are more\r\nlikely to observe per commits rather than per day/week. Users can choose\r\na more summarized view at their discretion.\r\n\r\nLet\u0027s change the default value for granularity to `Commit`.\r\n",
             "insertions": 1,
-            "deletions": 12
+            "deletions": 1
+          },
+          {
+            "hash": "3bf07fd69586874cf3238e9b28ea025b96f7ba97",
+            "messageTitle": "[#699] Report: standardize the author\u0027s name display (#701)",
+            "messageBody": "When summary charts are grouped by none or repo/branch, author\u0027s name\r\ndisplay shows only the display name. Whereas when grouped by author,\r\nthe name display shows the display name as well as GitHub username.\r\n\r\nThis causes inconsistency in the name display. Furthermore, user won\u0027t\r\nbe able to refer to the author\u0027s GitHub username when the summary\r\ncharts are not grouped by author.\r\n\r\nLet\u0027s standardize all the name display using the format,\r\n[display name] (github username).",
+            "insertions": 1,
+            "deletions": 1
           }
         ]
       },
       {
-        "insertions": 23,
-        "deletions": 3,
-        "date": "2018-06-18",
+        "insertions": 32,
+        "deletions": 2,
+        "date": "2019-06-03",
         "commitResults": [
           {
-            "hash": "8f51595a9394f0e4fb2c09beef668f36b3c91128",
-            "messageTitle": "[#132] Configure gradle to run with arguments (#136)",
-            "messageBody": "Our application requires input arguments to run from the console. \r\nHowever, without configuring the IDE or without the jar file, it is \r\nnot possible to pass input arguments for the application to run.\r\n\r\nLet\u0027s configure gradle to run with input parameters to make the\r\napplication independent of platforms. ",
-            "insertions": 23,
+            "hash": "7c0750c510003722f72ad363cb50ce759aa6735a",
+            "messageTitle": "[#635] CodeView: add line number to code (#669)",
+            "messageBody": "The code view displays only the code without the line number.\r\n\r\nIt is hard to associate a specific line from the code view with the\r\nactual code without the line number.\r\n\r\nLet\u0027s update the code view to display the line numbers by adding an\r\narray in each segment to keep track of the line numbers of the code.",
+            "insertions": 32,
+            "deletions": 2
+          }
+        ]
+      },
+      {
+        "insertions": 38,
+        "deletions": 17,
+        "date": "2019-06-05",
+        "commitResults": [
+          {
+            "hash": "ad1e0265a549888e25fc4b94759cca4bea575785",
+            "messageTitle": "[#702] Fix url directing to the wrong branch (#704)",
+            "messageBody": "The Octocat icon always links to the master branch of a GitHub \r\nrepository.\r\n\r\nOctocat icons of summary charts that are not within the master \r\nbranch will still point to the URL of the master branch.\r\n\r\nLet\u0027s update the URL to point to their respective branch.",
+            "insertions": 18,
+            "deletions": 10
+          },
+          {
+            "hash": "afa5be94ea35410ed126c2958024696a62d4fa2e",
+            "messageTitle": "[#664] Toolbar: expand width for `breakdown by file format` (#685)",
+            "messageBody": "The width of label `breakdown by fileformat` is set to 110px which\r\ndisplays in two lines even though there are enough room for it to\r\ndisplay in a single line.\r\n\r\nThis will cause the label to not look as organised as compared to the\r\nlabel being displayed in a single line.\r\n\r\nLet\u0027s expand the width for `breakdown by file format` by setting the\r\nwidth as fit-content to ensure that the label is displayed in a single\r\nline.",
+            "insertions": 6,
+            "deletions": 5
+          },
+          {
+            "hash": "eb9c7460a0e7672bff50c5e0708cb1ff0ed5b329",
+            "messageTitle": "[#663] ChartView: add total contribution of group (#697)",
+            "messageBody": "A group only shows the total contribution of each author or repo/branch\r\nwithin the group but not the total contribution of all combined.\r\n\r\nIt is rather difficult for the user to compare the total contribution\r\nbetween groups as the user would need to sum up the contribution of each\r\nrow in order to get the total contribution of a group.\r\n\r\nLet\u0027s display the total contribution of groups beside the group title so\r\nthat it is easier for the user to do comparisons between groups.",
+            "insertions": 14,
+            "deletions": 2
+          }
+        ]
+      },
+      {
+        "insertions": 36,
+        "deletions": 42,
+        "date": "2019-06-10",
+        "commitResults": [
+          {
+            "hash": "f96222a79167a55bb30fc9ced940b8660ef72425",
+            "messageTitle": "[#647] Toolbar: rename values in `sort group by` (#668)",
+            "messageBody": "The `sort groups by` selection contains the option of `repo/branch` and\r\n`name` when charts are grouped by Repo/Branch and Author respectively.\r\n\r\nAs it is a `sort group by` selection, there\u0027s is no need to use two\r\ndifferent options `repo/branch` and `name` as they both refer to the\r\n`group name`\r\n\r\nLet\u0027s rename both values to `group name` to standardize the values.",
+            "insertions": 36,
+            "deletions": 42
+          }
+        ]
+      },
+      {
+        "insertions": 34,
+        "deletions": 24,
+        "date": "2019-06-11",
+        "commitResults": [
+          {
+            "hash": "0d3ba8a7da3f4c97014ece0805bef0d1e40799b9",
+            "messageTitle": "[#660] ChartView: remove ramp slices not within date range (#670)",
+            "messageBody": "After adjusting the date range, ramp slices that are not within the \r\ndate range still shows in the ramp row.\r\n\r\nUsers would only want to see the ramp slices that are within the date \r\nrange.\r\n\r\nLet\u0027s remove the ramp slices that are not within date range by \r\nchecking if the position of the ramp slices are within the width of \r\nthe ramp row (if it is not within the width of the ramp row, the ramp\r\nslice is not within date range) before adding the ramp slices to the \r\nramp row.",
+            "insertions": 34,
+            "deletions": 24
+          }
+        ]
+      },
+      {
+        "insertions": 2,
+        "deletions": 0,
+        "date": "2019-06-15",
+        "commitResults": [
+          {
+            "hash": "27152fb10573899b79fe93ffc2e211329ce9a4fc",
+            "messageTitle": "[#712] ChartView: fix misalignment of chart title (#715)",
+            "messageBody": "When \u0027breakdown by file format\u0027 is checked, the title of a chart aligns\r\nbeside the contribution bars of the previous chart when the\r\ncontribution bars\u0027 height of exceeds the margin allocated.\r\n\r\nLet\u0027s fix this misalignment by adding css property \u0027clear:left\u0027 to the\r\nchart title so that the chart title will always start at a new line.",
+            "insertions": 2,
+            "deletions": 0
+          }
+        ]
+      },
+      {
+        "insertions": 0,
+        "deletions": 10,
+        "date": "2019-06-16",
+        "commitResults": [
+          {
+            "hash": "5a405e1be35dc5ae8ccf832dd5caf27a94f699d4",
+            "messageTitle": "[#689] v_summary.js: remove unused remnants code (#733)",
+            "messageBody": "Unused code was found in v_summary.js; specifically code associated\r\nwith the variable, filterSortReverse. They are remnants left behind by\r\nthe improvement of sort controls introduced in #618.\r\n\r\nThe unused code was originally bind to the reverse checkbox in the\r\nolder version of RepoSense. As the checkbox was replaced by the\r\nintroduction of ascending and descending options in #618, the code is\r\nnow unused and redundant. This is also partially due to the complexity\r\nbrought upon by new sorting group, the reversing has to be done within\r\nthe code of descending\u0027s logic, rendering those code not reusable.\r\n\r\nLet\u0027s remove the unused code associated to the variable, \r\nfilterSortReverse and it\u0027s implementations.",
+            "insertions": 0,
+            "deletions": 10
+          }
+        ]
+      },
+      {
+        "insertions": 36,
+        "deletions": 22,
+        "date": "2019-06-26",
+        "commitResults": [
+          {
+            "hash": "194bd125a57a63f2e764a348b7549f9bba18213e",
+            "messageTitle": "[#645] CodeView: improve UI of sort bar (#716)",
+            "messageBody": "In the UI of sortbar: \r\n- The font size of 3 controls (searchbar, checkbox, sort) are different\r\n- The sorting option\u0027s position is below the radio controls\r\n- The font of reverse checkbox is red in colour\r\n- The gaps between sorting option and radio controls is not \r\nstandardized\r\n\r\nLets:\r\n- Standardize the font size of all 3 controls so that the sort bar\r\nlooks neater\r\n- Shift sorting option to be above radio controls to further\r\nemphasize the number of radio buttons better\r\n- Set the font of reverse checkbox to be black in color to\r\ndifferentiate from other checkboxes and to be consistent with the\r\nChartView\r\n- Standardize the gaps between sorting option and radio controls",
+            "insertions": 28,
+            "deletions": 19
+          },
+          {
+            "hash": "5ad348098a9baa2effea7646bf0463da8cae5dd2",
+            "messageTitle": "[#720] Set command-click to activate zoom-in feature for macOS devices (#730)",
+            "messageBody": "Ctrl + mouse left-click is the default combination to activate the\r\nzoom-in feature for all environment.\r\n\r\nHowever, as the combination is registered as a right-click in macOS\r\nenvironment, users of macOS devices wouldn\u0027t be able to activate the\r\ncorresponding feature.\r\n\r\nLet\u0027s modify the zoom-in controls to allow command click for macOS \r\ndevices and control click for all other devices.",
+            "insertions": 8,
             "deletions": 3
           }
         ]
       },
       {
-        "insertions": 184,
-        "deletions": 40,
-        "date": "2018-07-15",
+        "insertions": 35,
+        "deletions": 10,
+        "date": "2019-06-27",
         "commitResults": [
           {
-            "hash": "e2c8d55addec2fb60d580e749011f0287d584002",
-            "messageTitle": "FileUtil: add zip function for offline preview (#152)",
-            "messageBody": "To view the dashboard, we need to run a local server as the\r\nsecurity in web browsers does not allow it to traverse the directories\r\non local machine.\r\n\r\nLet\u0027s zip all the necessary json files together to make our\r\napplication compatible with all the browsers and bypass the need to run\r\nthe application on local server. ",
-            "insertions": 184,
-            "deletions": 40
+            "hash": "8591328fbf84af35f2943756ae3f2a6fed8f67ef",
+            "messageTitle": "[#666] CodeView: load un-authored code only when toggled (#740)",
+            "messageBody": "Viewing the changes in code of an author causes the app to \r\nrender all authored and un-authored segments within modified files.\r\nA small change in large file will cause the entire file to be preloaded.\r\n\r\nWhen an author has small changes done to a lot of large files, it will\r\nlead to an unresponsive page as loading the large un-authored segments\r\nwill affect the rendering speed. Furthermore, the preloading of all \r\nun-authored code is not necessary as users might only view the \r\nun-authored code under certain circumstances. (e.g. when the user \r\ndoes not understand why the author added the authored code)\r\n\r\nLet\u0027s modify the app to only load the un-authored code when the \r\nuser toggles the \u0027Show untouched code\u0027 icon.",
+            "insertions": 35,
+            "deletions": 10
           }
         ]
       },
       {
-        "insertions": 148,
-        "deletions": 15,
-        "date": "2018-07-23",
+        "insertions": 1,
+        "deletions": 1,
+        "date": "2019-06-28",
         "commitResults": [
           {
-            "hash": "24365e9a26bb4b10c87c3d65cfce55a91e976fac",
-            "messageTitle": "Add functionality to start the web server to display the dashboard (#211)",
-            "messageBody": "To display the dashboard, user has to generate the report and manually\r\nopen the index.html and upload the zip file (for chrome and safari\r\nusers).\r\n\r\nLets give users an option to start the server and display the dashboard\r\nfor the specified report directory using the jar.",
-            "insertions": 148,
-            "deletions": 15
+            "hash": "d09194c65d9016c56dfc11d341b91cde5c0d1503",
+            "messageTitle": "[#741] Fix view code icon not opening CodeView (#744)",
+            "messageBody": "The splitCommitsWeek() method executes a dateRounding() method that \r\nrounds up the filterSinceDate to the next nearest Monday. When the \r\nreport page is reloaded, the filterSinceDate is set to the value of \r\nthe \u0027since\u0027 hash by the getDates() method. Since within the \r\ngetFiltered() method, splitCommitsWeek() is executed before\r\ngetDates(), the filterSinceDate stores an empty string which is \r\npassed to the dateRounding() method and returns a NaN value. \r\n\r\nSince splitCommitsWeek() method is only called when granularity is \r\n\u0027week\u0027, if users were to set granularity as \u0027week\u0027 and reload the page,\r\nclicking on the view code icon does not open the CodeView panel. \r\n\r\nLet\u0027s shift the getDates() method to be executed before \r\nsplitCommitsWeek() to make sure that splitCommitWeek() method\r\nis called with a valid filterSinceDate, which fixes the described bug.",
+            "insertions": 1,
+            "deletions": 1
           }
         ]
       },
       {
-        "insertions": 46,
+        "insertions": 2,
+        "deletions": 2,
+        "date": "2019-06-29",
+        "commitResults": [
+          {
+            "hash": "63ca0a11c8351729866d181a152742b2333c987d",
+            "messageTitle": "[#680] Vue: fix error message in development mode (#742)",
+            "messageBody": "An error message stating \"error compiling template: - \u003ctemplate\u003e\r\ncannot be keyed. Place the key on real elements instead.\" was found in\r\nChrome browser\u0027s console when running Vue in development mode for our\r\nreport.\r\n\r\nAlthough the Vue development tool still functions correctly, it \r\nhighlights an issue with the existing style and possibility degrades \r\nthe efficiency of the operations.\r\n\r\nLet\u0027s remove the Chrome browser console error by shifting the binding \r\nof keys from the \u003ctemplate\u003e tag to the inner \u003clabel\u003e tag.",
+            "insertions": 2,
+            "deletions": 2
+          }
+        ]
+      },
+      {
+        "insertions": 38,
+        "deletions": 11,
+        "date": "2019-07-03",
+        "commitResults": [
+          {
+            "hash": "651df45df4d9a91cf5557aabc030c309e93f20de",
+            "messageTitle": "[#770] Add placeholder for repositories with no author found (#777)",
+            "messageBody": "Repositories with no author specified in the configuration files as\r\nwell as no commits made during the specified period do not appear in\r\nthe report.\r\n\r\nThis is caused by a TypeError in JavaScript. When an author\r\nconfiguration can\u0027t be found for a repository, RepoSense will perform\r\nthe identification of the authors using the commits. However, in the\r\nevent that even commits cannot be found, author information will not be\r\navailable and result in the error stated above.\r\n\r\nAs users may not notice the disappearance of these repositories, let\u0027s\r\nadd a placeholder with an error message of \u0027NO AUTHOR WITH COMMITS\r\nFOUND WITHIN THIS PERIOD OF TIME\u0027 to the affected repositories to\r\ninform users of the occurrence of this error.",
+            "insertions": 38,
+            "deletions": 11
+          }
+        ]
+      },
+      {
+        "insertions": 69,
+        "deletions": 72,
+        "date": "2019-07-04",
+        "commitResults": [
+          {
+            "hash": "61be4e20b1af8e9eb1832fa5afa89bf7fe155f5a",
+            "messageTitle": "[#312] CodeView: reduce space taken by toggle icon (#773)",
+            "messageBody": "The toggle icon that separates between untouched and touched code \r\nsegments within the CodeView takes up significant amount of extra space.\r\n\r\nThe extra white space causes the code to be in a different layout than \r\nits actual layout.\r\n\r\nLet\u0027s place the toggle icon on the side of the code to not disrupt the \r\nlayout of the code while saving the extra space taken by the current\r\ntoggle icon.",
+            "insertions": 69,
+            "deletions": 72
+          }
+        ]
+      },
+      {
+        "insertions": 29,
         "deletions": 7,
-        "date": "2018-07-26",
+        "date": "2019-07-10",
         "commitResults": [
           {
-            "hash": "362a7f58a7099459f11eb8b4791898531bba6308",
-            "messageTitle": "Include timestamp footer in the dashboard (#235)",
-            "messageBody": "When reviewing multiple dashboards, it may be possible that user gets\r\nconfused with the version of the dashboard.\r\n\r\nTo assist the user, ensure that he/she is viewing the correct version,\r\nlet\u0027s include a generated timestamp in the footer of the dashboard.",
-            "insertions": 46,
+            "hash": "e3dc5d13cd231f26062bcc9fd5cf22ffaed32b9d",
+            "messageTitle": "[#748] Restore authorship tab (#749)",
+            "messageBody": "Reloading the report page with the authorship tab opened will result\r\nto a closed authorship tab.\r\n\r\nThe info.name property is only created when clicking on the view code\r\nicon and calling openTabAuthorship() method of v_summary. The\r\ninitiate() method of v_authorship sets the isTabActive property to be \r\nfalse if info.name property does not exist. Reloading the report page \r\ndoes not call openTabAuthorship(), which means that the info.name \r\nproperty will not exist and the isTabActive is false regardless of \r\nurl value.\r\n\r\nLet\u0027s modify the initiate() method of v_authorship.js to check for\r\ninfo.author property instead of info.name as the property exists \r\nwhen reloading the page as well as clicking on the view code icon.\r\nThis modification properly restores the last viewed authorship tab, \r\nif any.",
+            "insertions": 29,
             "deletions": 7
           }
         ]
       },
       {
-        "insertions": 51,
-        "deletions": 15,
-        "date": "2018-08-02",
+        "insertions": 2,
+        "deletions": 5,
+        "date": "2019-07-14",
         "commitResults": [
           {
-            "hash": "00d0c190febced8e3088314e2832535c364413d3",
-            "messageTitle": "[#188] Dashboard: code panel graphical improvement (#257)",
-            "messageBody": "",
-            "insertions": 51,
-            "deletions": 15
+            "hash": "d45513d6692248bfa38808e3b045b4ce51039c0c",
+            "messageTitle": "[#791] CodeView: bugfix for unexpected colors in line numbers (#792)",
+            "messageBody": "The css property of line number only overwrites the color property of \r\nclasses \u0027hljs-number\u0027 and \u0027hljs-comment\u0027. Others classes such as\r\n\u0027hljs-quote\u0027, \u0027hljs-name\u0027 and more are not overwritten.\r\n\r\nThis will cause the color property of certain line numbers to inherit \r\nfrom the hljs classes that are not overwritten.\r\n\r\nLet\u0027s overwrite all hljs classes to ensure the color property of the \r\nline number to always be grey.",
+            "insertions": 2,
+            "deletions": 5
+          }
+        ]
+      },
+      {
+        "insertions": 17,
+        "deletions": 2,
+        "date": "2019-07-17",
+        "commitResults": [
+          {
+            "hash": "255907108d29f67d4a08b91d36c8fe9a8368e7aa",
+            "messageTitle": "ChartView: highlight error messages in red (#790)",
+            "messageBody": "Within ChartView, ramp charts with error messages are blended together \r\nwith the other ramp charts without error messages as they both have \r\nsimilar UI.\r\n\r\nLet\u0027s modify the UI of ramp charts with error messages to use red color \r\nfor their info message font to distinguish itself from other ramp \r\ncharts without error messages.",
+            "insertions": 16,
+            "deletions": 2
+          },
+          {
+            "hash": "674f87d83558ccdee29d8aadf42a9647624e2d30",
+            "messageTitle": "[#811] CodeView: fix position of toggle icons (#813)",
+            "messageBody": "The \u0027closer\u0027 class designated for icons that toggle code segments\r\nis absolutely positioned. Due its parent class, \u0027untouched\u0027, being \r\nin default static position, \u0027closer\u0027 is positioned relatively to the \r\nedges of the root containing block.\r\n\r\nWhen scrolling through horizontally within each code segment, the \r\ntoggle icons remains unchanged in their position in x-axis, hovering \r\nover the text in code view.\r\n\r\nLet\u0027s relatively position the \u0027untouched\u0027 class, which turns the class \r\ninto a containing block. This ensures absolutely positioned elements \r\ncontained within will be positioned relative to the edges of \u0027untouched\u0027\r\nrather than the root containing block. ",
+            "insertions": 1,
+            "deletions": 0
+          }
+        ]
+      },
+      {
+        "insertions": 773,
+        "deletions": 752,
+        "date": "2019-07-18",
+        "commitResults": [
+          {
+            "hash": "e8bf034aaf33fa1a59c8933ffaa22dfdf82048fb",
+            "messageTitle": "[#522] Implement style checker on .scss files (#803)",
+            "messageBody": "RepoSense currently has CheckStyle and ESLint to check our java and \r\njavascript code styles automatically. However, .scss files are not \r\ncovered by any of these tools.\r\n\r\nLet\u0027s implement stylelint to check the code styles of .scss files.",
+            "insertions": 773,
+            "deletions": 752
+          }
+        ]
+      },
+      {
+        "insertions": 11,
+        "deletions": 1,
+        "date": "2019-07-20",
+        "commitResults": [
+          {
+            "hash": "174d06f15417b6feb7fc44bc608a478518a66b34",
+            "messageTitle": "[#764] Toolbar: fix search functionality for Safari users (#797)",
+            "messageBody": "The \u0027enter\u0027 key submits html forms in browsers such as Chrome and \r\nFirefox, but not in Safari.\r\n\r\nSince the getFiltered() method is executed on submit of the html form,\r\nSafari browser users are unable to activate the search functionality \r\nwhen search value is keyed in and \u0027enter\u0027 key is pressed.\r\n\r\nLet\u0027s move the execution of getFiltered() method to be within \r\nupdateFilterSearch(), to ensure that Safari users are also able to \r\nactivate the search functionality.",
+            "insertions": 2,
+            "deletions": 1
+          },
+          {
+            "hash": "f6520543bcb0c7ef1d0365a74a87958caca89e92",
+            "messageTitle": "[#763] v_summary.js: remove redundant calls to getFiltered() (#800)",
+            "messageBody": "When reloading the report page, the data in v_summary such as\r\nfilterSinceDate, filterUntilDate, filterTimeFrame etc will change based \r\non the URL hash values. The changes in data will trigger the watchers \r\nfor those data, and each of them will call getFiltered() method.\r\n\r\nOnly one call for getFiltered() is required after rendering the filter \r\nhash, the other getFiltered() calls by the watchers are redundant.\r\nWhen the report is large in size, repeatedly executing getFiltered()\r\nwhen reloading the report will also significantly affect the loading \r\nperformance of our report.\r\n\r\nLet\u0027s only allow watchers to execute getFiltered() after the first \r\ncycle of watcher updates to prevent redundant calls to getFiltered().",
+            "insertions": 9,
+            "deletions": 0
+          }
+        ]
+      },
+      {
+        "insertions": 49,
+        "deletions": 26,
+        "date": "2019-07-22",
+        "commitResults": [
+          {
+            "hash": "c8f248d9283fe86270e1f2906a7812882742bff2",
+            "messageTitle": "[#724] Modify zoom-in feature to based on selected granularity (#729)",
+            "messageBody": "The zoom-in feature opens the zoom panel to show the selected\r\nsub-range of a ramp chart in terms of \u0027commit\u0027. This feature, however, \r\nonly works when the granularity is set to commit or day.\r\n\r\nUsers will not be able to use this feature with granularity set to week,\r\nas the method getUserCommits() gets all user commits by interating \r\nthrough an undefined key object \u0027dayCommits\u0027, which stops the method\r\nexecution.\r\n\r\nMoreover, long sub-range of ramp charts will contain dense information \r\nwith ramp slices overlapping each other. This happens even when \r\ngranularity is set to day or week, which makes it difficult for users to \r\nnotice substantial info on these ramp charts.\r\n\r\nLet\u0027s correctly implement the zoom-in feature when granularity is set to\r\nweek. Furthermore, let\u0027s modify the feature for the ramp chart within \r\nzoom panel to be in terms of the granularity selected, which allow users \r\nto observe selected granularity of commits more clearly within the \r\nzoomed-in range.",
+            "insertions": 42,
+            "deletions": 19
+          },
+          {
+            "hash": "eb0e20f6cfda5485770df37e8f387082452d88c7",
+            "messageTitle": "[#780] v_summary.js: remove Vue watcher for repos (#783)",
+            "messageBody": "A redundant Vue watcher was found in v_summary.js, specifically the Vue\r\nwatcher for repos, as repos should remain constant and not be modified.\r\n\r\nThis is primarily used to call the getUsers() method, however this \r\nitself is redundant as getUsers() shouldn\u0027t be called more than once \r\nas it tends to overwrite repos with the same set of values.\r\n\r\nAdditionally, using Vue watcher for large data, such as repos, affects \r\nthe performance of the report.\r\n\r\nLet\u0027s remove the Vue watcher for repos and modify getUsers() to be \r\ncalled only once when page is firstly loaded.",
+            "insertions": 6,
+            "deletions": 6
+          },
+          {
+            "hash": "790840f5c3130b829cb655609d5e481b5932991d",
+            "messageTitle": "[#820] Cypress: add sinceDate in command arguments (#821)",
+            "messageBody": "The arguments used to generate the sample report used in Cypress \r\ntests is \u0027--repo https://github.com/reposense/RepoSense.git --view\u0027. \r\n\r\nSince sinceDate and untilDate is not provided in the arguments, the \r\nreport duration will be from one month before today\u0027s date until\r\ntoday\u0027s date. This causes the current sample report used for Cypress\r\ntests to contain empty ramp charts, which does not mimic a realistic\r\nreport.\r\n\r\nLet\u0027s add a \u0027--since d1\u0027 argument to the existing arguments, which \r\ngenerates a more realistic sample report that contains the commits\r\nmade from start until today\u0027s date.",
+            "insertions": 1,
+            "deletions": 1
+          }
+        ]
+      },
+      {
+        "insertions": 0,
+        "deletions": 9,
+        "date": "2019-07-24",
+        "commitResults": [
+          {
+            "hash": "1378e60b66d2493595efc17eae763327d266faa8",
+            "messageTitle": "[#828] Revert \"v_summary.js: remove redundant calls to getFiltered() (#800)\" (#832)",
+            "messageBody": "PR #800 was intended to ensure the getFiltered() method to be executed \r\nonly once when the page is reloaded. The solution used was to set \r\nboolean canGetFiltered to true in beforeUpdate() lifecycle hook, \r\npreventing the execution of getFiltered() before the lifecycle hook.\r\nHowever, the beforeUpdate() lifecycle hook will only be executed when \r\nthere are changes to the DOM. \r\n\r\nInstances where the page is reloaded and there are no changes to the DOM\r\nwill not set boolean canGetFiltered to true, preventing getFiltered() to \r\nbe executed until the DOM has changed.\r\n\r\nLet\u0027s revert PR #800 to allow getFiltered() to be executed even when \r\nthere are no changes to the DOM.",
+            "insertions": 0,
+            "deletions": 9
+          }
+        ]
+      },
+      {
+        "insertions": 32,
+        "deletions": 18,
+        "date": "2019-07-27",
+        "commitResults": [
+          {
+            "hash": "6873b4e5d289f1c898118a607c2c4b1e65c67e70",
+            "messageTitle": "[#809] DeveloperGuide: update the HTML report section (#810)",
+            "messageBody": "The HTML report section in our DG contains outdated info such as the\r\nreport summary diagram, sequence diagrams and the list of js files.\r\n\r\nLet\u0027s perform promptly due update, revise the HTML report section with\r\nthe latest report summary diagram, Vue lifecycle diagram, sequence\r\ndiagrams and the descriptions of the recently added js files such as\r\nv_ramp, v_zoom, and v_segment.",
+            "insertions": 32,
+            "deletions": 18
+          }
+        ]
+      },
+      {
+        "insertions": 105,
+        "deletions": 15,
+        "date": "2019-07-28",
+        "commitResults": [
+          {
+            "hash": "8f7db355698cb2430b536c32557339c357607378",
+            "messageTitle": "[#723] Report: fix modifying dates for Safari users (#801)",
+            "messageBody": "Safari browser users are unable to modify sinceDate and untilDate in\r\nthe report.\r\n\r\nThis is due to the datepickers used are HTML5 elements; they are not\r\nsupported by Safari. Furthermore, the alternative to modify the date\r\nfields, through the keydown events, are disabled.\r\n\r\nLet\u0027s allow Safari browser users to use a text-type input for their\r\nsinceDate and untilDate inputs. They can modify the dates by\r\nkeying the numeric date values into the date fields followed by hitting\r\nthe key, `enter`.",
+            "insertions": 84,
+            "deletions": 4
+          },
+          {
+            "hash": "acc66d3caae0072397b592eebe20aa6b6863b227",
+            "messageTitle": "[#778] ChartView: add zoom tab button (#796)",
+            "messageBody": "In addition to zooming into a range of ramp slices, the zoom tab also\r\nshows the breakdown of commits that are within the zoom range. This \r\nfunctionality however, is not encompassed for the entire ramp chart.\r\n\r\nLet\u0027s add a button that opens the zoom tab for the entire ramp chart.",
+            "insertions": 21,
+            "deletions": 11
+          }
+        ]
+      },
+      {
+        "insertions": 334,
+        "deletions": 118,
+        "date": "2019-07-31",
+        "commitResults": [
+          {
+            "hash": "80a592516d07d23a54932a78209bca9f0bc1a498",
+            "messageTitle": "[#662] ChartView: add merge group option (#752)",
+            "messageBody": "Within ChartView, a group has multiple rows of ramp charts that belongs\r\nto the group itself.\r\n\r\nIt may be difficult for users to analyse the contribution of the entire\r\ngroup or to compare the contribution between groups.\r\n\r\nLet\u0027s add a merge group checkbox such that when the checkbox is\r\nchecked, all ramp charts of the same group will be merged together\r\nto form a single ramp chart. This allows users to easily analyse \r\nthe total contribution on the group level.",
+            "insertions": 131,
+            "deletions": 26
+          },
+          {
+            "hash": "42b6b574f474cf6aed2acfc24bf2142a487d768e",
+            "messageTitle": "[#846] CodeView: fix show ramps for this period button (#847)",
+            "messageBody": "Clicking on show ramp chart for this period button in the commits\r\npanel calls updateDateRange(), which recomputes the duration of the\r\nramp chart according to the drags by the user. The method proceeds \r\nto call deactivateAllOverlays(), which removes the drags by the user.\r\n\r\nSince no more drags are left after the first execution of \r\nupdateDateRange(), clicking on the show ramp chart for this period\r\nbutton will not be able to activate updateDateRange().\r\n\r\nLet\u0027s use the zoom since date and until date to recompute the duration\r\nof the ramp chart, instead of using the drags. This will ensure that\r\nclicking on the button will always show the ramp chart for the \r\ndesignated period.",
+            "insertions": 7,
+            "deletions": 16
+          },
+          {
+            "hash": "9018b9073abfea6c10609b96b0d85e4d99ccaf97",
+            "messageTitle": "[#839] Set config to be inclusive of until date (#840)",
+            "messageBody": "The until date in the config does not match with the until date used in\r\ngit rev-list. Until date in the config is in 00:00:00 time whereas\r\nuntil date used in git rev-list uses the time 23:59:59 of the day\r\nbefore.\r\n\r\nThis discrepancy can cause the content and author of each line detected\r\nby git rev-list to be different, and have caused a disparity in the\r\noutput results in #789.\r\n\r\nLet\u0027s standardise the until date in the config to use time of 23:59:59 \r\nto match with the until date used in git rev-list.\r\n\r\nReference:\r\nhttps://github.com/reposense/RepoSense/pull/789#discussion_r307350220",
+            "insertions": 111,
+            "deletions": 39
+          },
+          {
+            "hash": "1c3bcf6e6fe863f4e06a1605d718659594e491b7",
+            "messageTitle": "[#754] Url: include date hashes only when modified (#757)",
+            "messageBody": "The initial URL of the report page captures a start and until \r\nhash parameter even when the users did not specify the start date\r\nand end date fields in the CLI.\r\n\r\nThe URL is then shared to others. If there are further updates to the \r\nreport, the URL will still navigate to the report page with ramps up \r\nuntil the original start date and until date instead of the most\r\nupdated dates which may include more recent/older commits.\r\n\r\nLet’s modify the report’s initial URL to not capture the start and end \r\ndate hashes when users did not specify the respective date field in\r\nthe CLI. Without the start date or end date hash parameter in the URL,\r\nthe URL will navigate to the report with the most updated start date\r\nand end date.",
+            "insertions": 77,
+            "deletions": 27
+          },
+          {
+            "hash": "06c5a05d9256dbd53c2565228226b9556555afa0",
+            "messageTitle": "[#842] Fix out of bound ramp slices (#844)",
+            "messageBody": "Ramp slices appear outside of the ramp charts in week granularity.\r\n\r\nThis is due to the implementation of splitCommitsWeek() does not take\r\ninto account when the duration between since date and until date is\r\nless than one week. When the duration is less than a week, the\r\nalgorithm calculates commits up to the following Monday, even if they\r\nare beyond the until date. Hence, it causes a distortion in the ui.\r\n\r\nLet\u0027s revamp the logic within splitCommitsWeek to check, and trim any\r\ncommits beyond the until date.",
+            "insertions": 8,
+            "deletions": 10
+          }
+        ]
+      },
+      {
+        "insertions": 53,
+        "deletions": 30,
+        "date": "2019-08-01",
+        "commitResults": [
+          {
+            "hash": "7ff4d5de6c6a3f3103d526cfeaeff8c38f137ec1",
+            "messageTitle": "Zoom Tab: revamp header ui (#848)",
+            "messageBody": "The zoom tab header remains the same irregardless of the grouping\r\noption (authors, repos or none). The period of the zoom tab is also not\r\nshown in the zoom tab.\r\n\r\nThis creates a problem when the merge group option is used; a merged\r\ngroup may consists of more than one chart, and the title used in the\r\nheader might not apply to all the ramps within the merged chart.\r\n\r\nLet\u0027s modify the UI of the zoom tab title to use a new sequence:\r\n`group title` -\u003e `chart title` -\u003e `period of zoom tab` -\u003e\r\n`granularity`, and hide the chart title when the merge group option is\r\nchecked.\r\n\r\nLet\u0027s also modify the authorship\u0027s title format to match with the zoom\r\ntab\u0027s title format as well.",
+            "insertions": 53,
+            "deletions": 30
+          }
+        ]
+      },
+      {
+        "insertions": 17,
+        "deletions": 4,
+        "date": "2019-08-09",
+        "commitResults": [
+          {
+            "hash": "6dc9ee3595b1c98c28b32339715fe8b5295cd953",
+            "messageTitle": "[#851] Fix url directing to wrong repository when merge group (#854)",
+            "messageBody": "When the merge group option is checked, charts are grouped by\r\nauthors and granularity is set to \u0027commit\u0027, the url of some commits \r\nmay point to the wrong repository.\r\n\r\nThis is due to our current structure of the merged groups, where each\r\nmerged author stores only one repository name even though they may \r\nhave contributed to more than one repository. This causes all url \r\nof commits to point to the same repository.\r\n\r\nLet\u0027s bind the repository name to each commit when merge group \r\noption is checked to ensure that all url of commits point to the \r\ncorrect repository.",
+            "insertions": 17,
+            "deletions": 4
+          }
+        ]
+      },
+      {
+        "insertions": 2,
+        "deletions": 2,
+        "date": "2019-09-01",
+        "commitResults": [
+          {
+            "hash": "8e0a89e06225aa5f8d58e0586082f2e811fe24fb",
+            "messageTitle": "ChartView: modify the sorting of the authors to use display names (#880)",
+            "messageBody": "The sorting of the author by title is according to the authors\u0027 \r\nGitHub usernames.\r\n\r\nGithub usernames are strings that users have no control over, \r\nan unconfigurable field. Therefore, sorting according to it does not\r\nhave much value to the user, should she chose to configure the display\r\nnames.\r\n\r\nLet\u0027s modify the sorting of author names to be according to the\r\nauthors\u0027 display names.",
+            "insertions": 2,
+            "deletions": 2
+          }
+        ]
+      },
+      {
+        "insertions": 22,
+        "deletions": 14,
+        "date": "2019-09-05",
+        "commitResults": [
+          {
+            "hash": "816bb1a856387ca848504ae279bc2a4b81f4a308",
+            "messageTitle": "[#858] Restore authorship tab (#874)",
+            "messageBody": "Authorship tab is not restorable after refreshing the page.\r\n\r\nRestoring authorship tab requires the since and until date hashes \r\nwhereas PR #757 has made changes where the date hashes will not \r\nbe captured in the URL if not specified by the user.\r\n\r\nLet\u0027s \r\n- use the window\u0027s since and until date to restore the authorship \r\n  tab if the date hashes are unavailable. \r\n- move the restoring of tab hashes to be executed after \r\n  loadSummary() to ensure that the window\u0027s since and until date is \r\n  available.\r\n- extract the deactivation of tab pane to a method instead of using\r\n  the updated hook as the updated hook will be called repeatedly \r\n  whenever there are data changes that affect the DOM.\r\n",
+            "insertions": 22,
+            "deletions": 14
           }
         ]
       }
@@ -1634,7 +1984,7 @@
         ]
       },
       {
-        "insertions": 2085,
+        "insertions": 1955,
         "deletions": 481,
         "date": "2018-07-12",
         "commitResults": [
@@ -1642,22 +1992,22 @@
             "hash": "c247eeb36846b17006169d0f477b6b49f1db8729",
             "messageTitle": "Dashboard revamp (#163)",
             "messageBody": "There are 2 main templates loaded separately to process the information\r\nfrom the generated report. This requires the same template files to be\r\nregenerated multiple times, which greatly increases the size of the\r\ngenerated report unnecessarily. Ideally, it should only contains the\r\ndata for the report.\r\n\r\nAlso, as the dashboard uses vue for its templating engine mostly, let\u0027s\r\nbetter utilize the framework to restructure the dashboard into a single\r\npage application which loads content from the report dynamically.",
-            "insertions": 2085,
+            "insertions": 1955,
             "deletions": 481
           }
         ]
       },
       {
-        "insertions": 7,
-        "deletions": 2,
+        "insertions": 3,
+        "deletions": 1,
         "date": "2018-08-04",
         "commitResults": [
           {
             "hash": "4913e50ff961a5e6f93997bb8de4739515e3b502",
             "messageTitle": "[#226] Add clickable link to repositories (#281)",
             "messageBody": "To view the repository, user needs to manually open the link to navigate to it.\r\n\r\nLet\u0027s simplify this by adding a redirect link to the remote repositories in the\r\ndashboard itself.",
-            "insertions": 7,
-            "deletions": 2
+            "insertions": 3,
+            "deletions": 1
           }
         ]
       },
@@ -1697,7 +2047,7 @@
         ]
       },
       {
-        "insertions": 18,
+        "insertions": 14,
         "deletions": 0,
         "date": "2018-08-25",
         "commitResults": [
@@ -1705,7 +2055,7 @@
             "hash": "87c25b058e297ed0356a7c5c2d6b6808f7fd3c0d",
             "messageTitle": "[#36] Code view: add controls to expand/collapse all files (#307)",
             "messageBody": "Files in code view are shown in open state by default.\r\n\r\nWith the addition of #282, it can be useful to show only the file\r\nheaders as it provides a rough impression of the author\u0027s focus area\r\nof contribution and pattern.\r\n\r\nLet\u0027s add controls to allow user to expand or collapse all the files in\r\ncode view at their will.",
-            "insertions": 18,
+            "insertions": 14,
             "deletions": 0
           }
         ]
@@ -2000,34 +2350,34 @@
     ]
   },
   "authorFinalContributionMap": {
-    "ongspxm": 636,
-    "AdityaA1998": 373,
+    "ongspxm": 722,
+    "jamessspanggg": 1208,
     "yamidark": 1726,
     "yong24s": 1851,
-    "eugenepeh": 2270
+    "eugenepeh": 2308
   },
   "authorFileTypeContributionMap": {
     "ongspxm": {
       "gradle": 5,
-      "jade": 0,
+      "pug": 86,
       "java": 91,
       "js": 392,
       "md": 68,
       "scss": 80,
       "yml": 0
     },
-    "AdityaA1998": {
-      "gradle": 2,
-      "jade": 0,
-      "java": 359,
-      "js": 2,
-      "md": 5,
-      "scss": 5,
-      "yml": 0
+    "jamessspanggg": {
+      "gradle": 0,
+      "pug": 99,
+      "java": 171,
+      "js": 381,
+      "md": 37,
+      "scss": 519,
+      "yml": 1
     },
     "yamidark": {
       "gradle": 27,
-      "jade": 0,
+      "pug": 0,
       "java": 1555,
       "js": 3,
       "md": 140,
@@ -2036,7 +2386,7 @@
     },
     "yong24s": {
       "gradle": 34,
-      "jade": 0,
+      "pug": 0,
       "java": 1646,
       "js": 0,
       "md": 130,
@@ -2045,7 +2395,7 @@
     },
     "eugenepeh": {
       "gradle": 8,
-      "jade": 0,
+      "pug": 38,
       "java": 1442,
       "js": 350,
       "md": 215,
@@ -2054,15 +2404,15 @@
     }
   },
   "authorContributionVariance": {
-    "ongspxm": 1781.7079,
-    "AdityaA1998": 219.35228,
-    "yamidark": 6960.175,
-    "yong24s": 2127.9724,
-    "eugenepeh": 2.32902512E8
+    "ongspxm": 1751.8458,
+    "jamessspanggg": 3783.0989,
+    "yamidark": 6778.373,
+    "yong24s": 2073.0889,
+    "eugenepeh": 2.26792688E8
   },
   "authorDisplayNameMap": {
     "ongspxm": "Metta",
-    "AdityaA1998": "Aditya",
+    "jamessspanggg": "James",
     "yamidark": "Jun An",
     "yong24s": "Yong Hao",
     "eugenepeh": "Eugene"
