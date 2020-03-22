@@ -1,4 +1,3 @@
-window.BASE_URL = 'https://github.com';
 window.REPORT_ZIP = null;
 window.REPOS = {};
 window.isMacintosh = navigator.platform.includes('Mac');
@@ -106,29 +105,11 @@ window.app = new window.Vue({
     userUpdated: false,
 
     isLoading: false,
+    isCollapsed: false,
     isTabActive: true, // to force tab wrapper to load
 
     tabType: 'empty',
-    tabInfo: {
-      tabAuthorship: {
-        author: '',
-        location: '',
-        maxDate: '',
-        minDate: '',
-        name: '',
-        repo: '',
-      },
-      tabZoom: {
-        avgCommitSize: 0,
-        filterGroupSelection: '',
-        filterTimeFrame: '',
-        location: '',
-        isMergeGroup: false,
-        sinceDate: '',
-        untilDate: '',
-        user: null,
-      },
-    },
+    tabInfo: {},
     creationDate: '',
 
     errorMessages: {},
@@ -189,11 +170,14 @@ window.app = new window.Vue({
 
     // handle opening of sidebar //
     activateTab(tabName) {
+      // changing isTabActive to trigger redrawing of component
+      this.isTabActive = false;
       if (document.getElementById('tabs-wrapper')) {
         document.getElementById('tabs-wrapper').scrollTop = 0;
       }
 
       this.isTabActive = true;
+      this.isCollapsed = false;
       this.tabType = tabName;
 
       window.addHash('tabOpen', this.isTabActive);
@@ -211,11 +195,11 @@ window.app = new window.Vue({
     },
 
     updateTabAuthorship(obj) {
-      this.tabInfo.tabAuthorship = Object.assign({}, this.tabInfo.tabAuthorship, obj);
+      this.tabInfo.tabAuthorship = Object.assign({}, obj);
       this.activateTab('authorship');
     },
     updateTabZoom(obj) {
-      this.tabInfo.tabZoom = Object.assign({}, this.tabInfo.tabZoom, obj);
+      this.tabInfo.tabZoom = Object.assign({}, obj);
       this.activateTab('zoom');
     },
 
@@ -262,16 +246,23 @@ window.app = new window.Vue({
       }
     },
 
+    generateKey(dataObj) {
+      return JSON.stringify(dataObj);
+    },
+
     getRepoSenseHomeLink() {
       return 'http://reposense.org';
     },
 
-    getUserGuideVersionLink() {
+    getRepoSenseVersionLink() {
       const version = window.app.repoSenseVersion;
       if (!version) {
-        return `${window.BASE_URL}/reposense/RepoSense`;
+        return 'https://github.com/reposense/RepoSense';
       }
-      return `${window.BASE_URL}/reposense/RepoSense/blob/${version}/docs/UserGuide.md`;
+      if (version.startsWith('v')) {
+        return `https://github.com/reposense/RepoSense/releases/tag/${version}`;
+      }
+      return `https://github.com/reposense/RepoSense/commits/${version}`;
     },
 
     receiveDates(dates) {

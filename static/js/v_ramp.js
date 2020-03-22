@@ -1,5 +1,5 @@
 function getBaseLink(repoId) {
-  return `${window.BASE_URL}/${
+  return `http://github.com/${
     window.REPOS[repoId].location.organization}/${
     window.REPOS[repoId].location.repoName}`;
 }

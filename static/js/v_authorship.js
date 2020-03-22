@@ -27,45 +27,34 @@ const repoCache = [];
 const minimatch = require('minimatch');
 
 window.vAuthorship = {
-  props: {
-    info: Object,
-  },
+  props: ['info'],
   template: window.$('v_authorship').innerHTML,
   data() {
     return {
       isLoaded: false,
       files: [],
-      filterType: 'checkboxes',
+      isSelectAllChecked: true,
       selectedFileTypes: [],
       fileTypes: [],
       fileTypeBlankLinesObj: {},
       totalLineCount: '',
       totalBlankLineCount: '',
       filesSortType: 'lineOfCode',
-      toReverseSortFiles: true,
-      hasActiveFile: true,
+      toReverseSortFiles: false,
+      activeFilesCount: 0,
       filterSearch: '*',
+      sortingFunction: window.comparator(filesSortDict.lineOfCode),
+      isSearchBar: false,
+      isCheckBoxes: true,
     };
   },
 
   watch: {
-    selectedFiles() {
-      setTimeout(this.updateCount, 0);
+    filesSortType() {
+      this.sortFiles();
     },
-
-    filterType() {
-      if (this.filterType === 'checkboxes') {
-        const searchBar = document.getElementById('search');
-        searchBar.value = '';
-        this.filterSearch = '*';
-      } else {
-        this.selectedFileTypes = this.fileTypes.slice();
-      }
-    },
-
-    info() {
-      this.initiate();
-      this.setInfoHash();
+    toReverseSortFiles() {
+      this.sortFiles();
     },
   },
 
@@ -111,19 +100,19 @@ window.vAuthorship = {
       encodeHash();
     },
 
-    expandAll(hasActiveFile) {
-      const renameValue = hasActiveFile ? 'file active' : 'file';
+    expandAll(isActive) {
+      const renameValue = isActive ? 'file active' : 'file';
 
       const files = document.getElementsByClassName('file');
       Array.from(files).forEach((file) => {
         file.className = renameValue;
       });
 
-      this.hasActiveFile = hasActiveFile;
+      this.activeFilesCount = isActive ? this.selectedFiles.length : 0;
     },
 
     updateCount() {
-      this.hasActiveFile = document.getElementsByClassName('file active').length > 0;
+      this.activeFilesCount = document.getElementsByClassName('file active').length;
     },
 
     hasCommits(info) {
@@ -206,10 +195,11 @@ window.vAuthorship = {
         }
       });
 
-      this.selectedFileTypes = this.fileTypes.slice();
       this.fileTypeBlankLinesObj = fileTypeBlanksInfoObj;
       this.files = res;
       this.isLoaded = true;
+
+      this.activeFilesCount = this.selectedFiles.length;
     },
 
     addBlankLineCount(fileType, lineCount, filesInfoObj) {
@@ -220,31 +210,80 @@ window.vAuthorship = {
       filesInfoObj[fileType] += lineCount;
     },
 
+    sortFiles() {
+      this.sortingFunction = (a, b) => (this.toReverseSortFiles ? -1 : 1)
+          * window.comparator(filesSortDict[this.filesSortType])(a, b);
+    },
+
+    selectAll() {
+      if (this.isSearchBar) {
+        this.indicateCheckBoxes();
+      }
+      if (!this.isSelectAllChecked) {
+        this.selectedFileTypes = this.fileTypes.slice();
+        this.activeFilesCount = this.files.length;
+      } else {
+        this.selectedFileTypes = [];
+        this.activeFilesCount = 0;
+      }
+    },
+
+    selectFileType(fileType) {
+      if (this.isSearchBar) {
+        this.indicateCheckBoxes();
+      }
+      if (this.selectedFileTypes.includes(fileType)) {
+        const index = this.selectedFileTypes.indexOf(fileType);
+        this.selectedFileTypes.splice(index, 1);
+      } else {
+        this.selectedFileTypes.push(fileType);
+      }
+    },
+
+    getSelectedFiles() {
+      if (this.fileTypes.length === this.selectedFileTypes.length) {
+        this.isSelectAllChecked = true;
+      } else {
+        this.isSelectAllChecked = false;
+      }
+
+      setTimeout(this.updateCount, 0);
+    },
+
     updateFilterSearch(evt) {
-      if (this.filterType === 'checkboxes') {
+      if (this.isCheckBoxes) {
         this.indicateSearchBar();
       }
       this.filterSearch = (evt.target.value.length !== 0) ? evt.target.value : '*';
     },
 
-    indicateSearchBar() {
+    tickAllCheckboxes() {
       this.selectedFileTypes = this.fileTypes.slice();
-      this.filterType = 'search';
+      this.isSelectAllChecked = true;
+    },
+
+    indicateSearchBar() {
+      this.isSearchBar = true;
+      this.isCheckBoxes = false;
+      this.tickAllCheckboxes();
     },
 
     indicateCheckBoxes() {
-      if (this.filterType === 'search') {
-        const searchBar = document.getElementById('search');
-        searchBar.value = '';
-        this.filterSearch = '*';
-        this.filterType = 'checkboxes';
-      }
+      const searchBar = document.getElementById('search');
+      searchBar.value = '';
+      this.filterSearch = '*';
+      this.isSearchBar = false;
+      this.isCheckBoxes = true;
+    },
+
+    isSelectedFileTypes(fileType) {
+      return this.selectedFileTypes.includes(fileType);
     },
 
     getFileLink(file, path) {
       const repo = window.REPOS[this.info.repo];
 
-      return `${window.BASE_URL}/${
+      return `http://github.com/${
         repo.location.organization}/${repo.location.repoName}/${path}/${repo.branch}/${file.path}`;
     },
 
@@ -261,33 +300,11 @@ window.vAuthorship = {
   },
 
   computed: {
-    sortingFunction() {
-      return (a, b) => (this.toReverseSortFiles ? -1 : 1)
-        * window.comparator(filesSortDict[this.filesSortType])(a, b);
-    },
-
-    isSelectAllChecked: {
-      get() {
-        return this.selectedFileTypes.length === this.fileTypes.length;
-      },
-      set(value) {
-        if (this.filterType === 'search') {
-          this.indicateCheckBoxes();
-        }
-        if (value) {
-          this.selectedFileTypes = this.fileTypes.slice();
-        } else {
-          this.selectedFileTypes = [];
-        }
-      },
-    },
-
     selectedFiles() {
-      return this.files.filter((file) => this.selectedFileTypes.includes(file.fileType)
-          && minimatch(file.path, this.filterSearch, { matchBase: true, dot: true }))
+      return this.files.filter((file) => this.isSelectedFileTypes(file.fileType)
+          && minimatch(file.path, this.filterSearch, { matchBase: true }))
           .sort(this.sortingFunction);
     },
-
     getFileTypeExistingLinesObj() {
       const numLinesModified = {};
       Object.entries(this.filesLinesObj)

@@ -66,9 +66,6 @@
             "hash": "a3c6bccff3a344f78b0d66a68cab517cf5e908ff",
             "messageTitle": "[#156] Dashboard: synchronize code panel display name (#164)",
             "messageBody": "The dashboard\u0027s overview displays the DisplayName as specified in the CSV\r\nconfig file while the side panel displays the gitHub ID instead.\r\n\r\nThis may cause confusion to users as the display name and for overview and the\r\nside panel is different.\r\n\r\nLet\u0027s update the code panel to show the the same display name as overview.",
-            "tags": [
-              "v1.1.1"
-            ],
             "insertions": 5,
             "deletions": 3
           }
@@ -258,9 +255,6 @@
             "hash": "f4003495b44a1a236735325e61bf79a57eac095a",
             "messageTitle": "[#304] Fix TypeError: \"commits[0] is undefined\" (#303)",
             "messageBody": "For authors with absolutely no commit history,  v_summary runs into\r\ntrouble trying to determine the date range of the commits.\r\n\r\nLet\u0027s do a check before calculating the date range of the commits.",
-            "tags": [
-              "v1.3.1"
-            ],
             "insertions": 9,
             "deletions": 7
           }
@@ -303,9 +297,6 @@
             "hash": "adec166ee3347f68c0e8fb169e18b19dc375e26c",
             "messageTitle": "[#358] Report#datepicker: default value not filled on initial load (#359)",
             "messageBody": "The date picker does not display the date range of summary view on\r\nload.\r\n\r\nLet\u0027s obtain the date picker value from the hash param if provided,\r\notherwise, set it to be the minimum and maximum dates of the generated\r\nreport by default.",
-            "tags": [
-              "v1.5.3"
-            ],
             "insertions": 15,
             "deletions": 3
           }
@@ -903,9 +894,6 @@
             "hash": "816bb1a856387ca848504ae279bc2a4b81f4a308",
             "messageTitle": "[#858] Restore authorship tab (#874)",
             "messageBody": "Authorship tab is not restorable after refreshing the page.\r\n\r\nRestoring authorship tab requires the since and until date hashes \r\nwhereas PR #757 has made changes where the date hashes will not \r\nbe captured in the URL if not specified by the user.\r\n\r\nLet\u0027s \r\n- use the window\u0027s since and until date to restore the authorship \r\n  tab if the date hashes are unavailable. \r\n- move the restoring of tab hashes to be executed after \r\n  loadSummary() to ensure that the window\u0027s since and until date is \r\n  available.\r\n- extract the deactivation of tab pane to a method instead of using\r\n  the updated hook as the updated hook will be called repeatedly \r\n  whenever there are data changes that affect the DOM.\r\n",
-            "tags": [
-              "v1.10"
-            ],
             "insertions": 22,
             "deletions": 14
           }
@@ -1006,9 +994,6 @@
             "hash": "968c6a8565bf5a66d18570a2d52dc7ff567ad7dd",
             "messageTitle": "[#177] Add more default file types to analyze (#178)",
             "messageBody": "RepoSense only tracks \u0027.java\u0027 and \u0027.adoc\u0027 file types for analyse.\r\n\r\nThis may not be sufficient for visualization as not many other projects that\r\nare not mainly coded in Java or use asciidoctor for their documents.\r\n\r\nLet\u0027s include more file types by default in the analysis.",
-            "tags": [
-              "v1.1-rc"
-            ],
             "insertions": 64,
             "deletions": 12
           }
@@ -1079,9 +1064,6 @@
             "hash": "a76a1b4d1492aeb9c8c2662fc9f06d68b21f5c0e",
             "messageTitle": "[#215] Extracting info from git diff is not working as expected (#216)",
             "messageBody": "FileInfoExtractor#getFilePathFromDiffPattern(String) checks\r\nfor the group pattern \u0027+++ b/path/to/file\u0027\r\nwithin the git diff result in order to get the file path.\r\n\r\nHowever, when a new and also empty file is added in between the\r\ncommit range to analysis, the file will appear in the git diff result,\r\nbut since there are no lines to display, the above group does not\r\nget printed, thus \r\nFileInfoExtractor#getFilePathFromDiffPattern(String) is unable\r\nto match the pattern, causing the program to crash.\r\n\r\nLet\u0027s add a check to skip these new and empty files in \r\nthe git diff result, since an empty file has no lines to \r\nattribute any contribution.",
-            "tags": [
-              "v1.1.1a"
-            ],
             "insertions": 12,
             "deletions": 3
           }
@@ -1117,9 +1099,6 @@
             "hash": "14b7c569e65fedaaadbd2f2143f3d383fcb2346f",
             "messageTitle": "Fix empty ramps when overriding RepoConfiguration (#243)",
             "messageBody": "When a repo has a _reposense/config.json configuration file,\r\nthe RepoConfiguration will be reset to the new config.json file,\r\nand all authors are reset as well.\r\n\r\nHowever, these reset authors does not have their author aliases\r\nor ignore glob list set inside them. This may cause some of the\r\ncommit info to be missing as we are filtering commits by author\r\nnames and aliases.\r\n\r\nLet\u0027s fix this by updating the\r\nRepoConfiguration#update(StandAloneConfig) to set the\r\nauthor aliases and ignore glob list for each author inside the\r\nconfig.json file.",
-            "tags": [
-              "v1.1.2"
-            ],
             "insertions": 17,
             "deletions": 2
           }
@@ -1141,9 +1120,6 @@
             "hash": "f6f5f2640e59d76d6a8702ee3586ef654181d1d5",
             "messageTitle": "[#301] Hotfix: report folder not generated when failed to analyze repo (#302)",
             "messageBody": "When we fail to clone/checkout a config\u0027s repository, we will\r\nskip analyzing that repository, thus not generating its report folder.\r\n\r\nHowever, as the config is still inside the config list, we will still add\r\nthat \u0027failed\u0027 config into summary.json. This will cause the dashboard\r\nto crash as it tries to load a report folder which does not exist.\r\n\r\nLet\u0027s update ReportGenerator to generate the report folder with\r\n\u0027empty\u0027 reports when failing to clone/checkout the repository, so as\r\nto allow the dashboard to be viewed, and also allow the user to identify\r\nerrors in which repository config info given.",
-            "tags": [
-              "v1.3"
-            ],
             "insertions": 32,
             "deletions": 1
           }
@@ -1221,9 +1197,6 @@
             "hash": "c05f000e0daf69de292a4c53201fc8c47213fae5",
             "messageTitle": "[#357] FileInfoExtractor: use cleaner alternative to extract code change (#361)",
             "messageBody": "FileInfoExtractor#getEditedFileInfos(...) first checks for each file\r\nwhether they in a blacklist of \u0027uncommon\u0027 file changes which does not\r\nfollow the line patterns that we check for, and skips those files as they\r\nare all unchanged files that does not have any difference to check for.\r\n\r\nAs there are many of such \u0027uncommon\u0027 file changes, some of these changes\r\nmay not have been added in our blacklist yet, which may cause the program\r\nto crash unexpectedly, e.g #215 #300 #356.\r\n\r\nInstead of trying to find out each of this \u0027uncommon\u0027 file changes and\r\nblacklisting each 1 of them, it is easier and cleaner to whitelist only\r\nthose files that have valid diff file changes which follow the line patterns\r\nwe are checking for.\r\n\r\nLet\u0027s change the blacklist for valid diff files to be a whitelist instead,\r\nand check for the exception if this file is deleted.",
-            "tags": [
-              "v1.5.1"
-            ],
             "insertions": 15,
             "deletions": 52
           }
@@ -1238,9 +1211,6 @@
             "hash": "be94eedde7dd797793cd29b2af425a5d2e69f486",
             "messageTitle": "[#370] Fix uncaught InvalidPathException due to Illegal char \u003c:\u003e in file name (#371)",
             "messageBody": "Windows disallows certain characters for the file names, such as `/\\:*?\"\u003c\u003e|`,\r\nwhile other OSes like Linux allows almost any characters for their file names.\r\nThis may result in some files with such `banned` characters in the repository\r\nto not be copied/cloned into a local copy for Windows OS.\r\n\r\nAs we use the `git diff` command to find file differences for analyzing\r\nrepositories with a date range, such files with `banned` characters may appear\r\nin the `git diff` result, which result in an InvalidPathException being thrown\r\nwhen we try to create a Path to this file name, which is invalid in Windows.\r\nThis causes the program to crash as the exception is not handled anywhere.\r\n\r\nLet\u0027s update FileInfoExtractor to handle files with invalid file names by\r\nskipping those files.",
-            "tags": [
-              "v1.5.4"
-            ],
             "insertions": 51,
             "deletions": 5
           }
@@ -1255,9 +1225,6 @@
             "hash": "ad10410d26aba8dbcfe1b13cbcd752ad544accf8",
             "messageTitle": "[#297] UserGuide: add FAQ section to address common problems (#494)",
             "messageBody": "Our UserGuide does not have a FAQ section.\r\n\r\nLet\u0027s add a FAQ section in our UserGuide to address common questions\r\nand issues, allowing users troubleshoot them themselves.",
-            "tags": [
-              "v1.7"
-            ],
             "insertions": 27,
             "deletions": 0
           }
@@ -1379,9 +1346,6 @@
             "hash": "d1ec823ca24763594b00279ca0b81a70e54ef797",
             "messageTitle": "[#194] Fix invalid path when accessing jar resources (#196)",
             "messageBody": "RepoSense v1.1-rc2 executed as a JAR throws an InvalidPathException\r\nwhen accessing templateZip.zip.\r\n\r\nThis is because the location of the templateZip.zip cannot be located\r\nby its path on the disk but by its relative path in the JAR file. \r\n\r\nSo let\u0027s change the way to retrieve templateZip.zip from \r\nRepoSense.class.getClassLoader().getResource(\"templateZip.zip\") to \r\nRepoSense.class.getResourceAsStream(\"/templateZip.zip\").",
-            "tags": [
-              "v1.1"
-            ],
             "insertions": 25,
             "deletions": 16
           }
@@ -1459,9 +1423,6 @@
             "hash": "fa6b680d6a13f9875969f0ed65aacf217d7546a1",
             "messageTitle": "[#245] Split repo and author level configurations (#238)",
             "messageBody": "RepoSense uses a CSV config file for all repository information.\r\n\r\nFollowing #234, analysis can be done at author level.\r\nTo make author level analysis available to the users, the CSV config\r\nfile has to be broken down into repo-config.csv and author-config.csv.\r\n\r\nLet\u0027s split the CSV config file to repo-config.csv and author-config.csv.\r\n",
-            "tags": [
-              "v1.2"
-            ],
             "insertions": 388,
             "deletions": 129
           }
@@ -1490,9 +1451,6 @@
             "hash": "939d9baa52d7596111f97b3c27b573deb40fa855",
             "messageTitle": "Add tests to RepoConfiguration#merge (#279)",
             "messageBody": "AuthorConfigCsvParser#getRepoConfiguration should return existing\r\nRepoConfiguration from a list of RepoConfigurations. Otherwise it adds\r\na newly created RepoConfiguration into the list and returns it.\r\n\r\nHowever, due to a bug, any RepoConfigurations existing or not are added\r\nto the list of RepoConfigurations causing duplicates.\r\n\r\nLet\u0027s add test to RepoConfiguration#merge to prevent bugs. ",
-            "tags": [
-              "v1.2.1"
-            ],
             "insertions": 68,
             "deletions": 1
           }
@@ -1873,9 +1831,6 @@
             "hash": "134c4e0cf4e01fc28362cd918eaa495c36996ce3",
             "messageTitle": "Gradle: replace build with shadowJar plugin (#68)",
             "messageBody": "Gradle build compiles our source files and libraries used in the\r\nprogram into separate jar files, and delivers the entire package as\r\na zip file.\r\n\r\nIt is rather inconvenient as user would have to extract from the zip\r\nfile to use it and also have more unnecessary files to deal with.\r\nAdditionally, if we package only our own class files into the JAR\r\nfile, it will not work properly unless the user has all the other \r\nJAR files (i.e. third party libraries) our classes depend on.\r\n\r\nLet\u0027s replace the gradle build with shadowJar plugin to package all\r\ndependencies into a single JAR file which enhance usability and\r\nportability.\r\n",
-            "tags": [
-              "v1.0"
-            ],
             "insertions": 29,
             "deletions": 15
           }
@@ -2191,9 +2146,6 @@
             "hash": "3d73cf6420bffd1536b53a1bbe2396f99ccc48af",
             "messageTitle": "[#331] UserGuide: update outdated content (#335)",
             "messageBody": "",
-            "tags": [
-              "v1.4"
-            ],
             "insertions": 30,
             "deletions": 30
           }
@@ -2236,9 +2188,6 @@
             "hash": "308e4078d91a69826909ade4b029a60ff68e4f19",
             "messageTitle": "Fix error occurred from file change due to permission bits modification (#356)",
             "messageBody": "We use git diff to extract file infos. In particular rare cases, our\r\ncode fails to extracting relevant file infos for certain commits, due\r\nto special extended header lines `old mode 100644` \r\n`new mode 100755` returned by the git diff, it throws an\r\nAssertionError halfway during the analysis.\r\n\r\nThis is due to git, besides the file content and changes, it also\r\ntracks the executable bit of the files\u0027 permission. As our program did\r\nnot foresee this scenario, it crashes upon the occurrence.\r\n\r\nLet\u0027s fix this by inserting additional guard clause for this scenario\r\nin our FileInfoExtractor.",
-            "tags": [
-              "v1.5"
-            ],
             "insertions": 19,
             "deletions": 3
           }
@@ -2253,9 +2202,6 @@
             "hash": "8229759332add46aa499d92a303d23e74a8b8e15",
             "messageTitle": "[#363] Make the commits info analysis case insensitive (#364)",
             "messageBody": "CommitInfoExtractor uses git log to extract users\u0027 commits info.\r\nHowever, by default, the author matching pattern used in git log is\r\ncase sensitive.\r\n\r\nThis can cause the CommitInfoAnalyzer to miss out some or all their\r\ncommits in the analysis. As a result, some authors do not have any\r\nramps shown in their ramp chart, even though their code view shows line\r\ncontributions.\r\n\r\nTo resolve this problem, let\u0027s set the git log regex patterns to be\r\ncase insensitive.",
-            "tags": [
-              "v1.5.2"
-            ],
             "insertions": 9,
             "deletions": 1
           }
@@ -2326,9 +2272,6 @@
             "hash": "10fa5d269faf76e72d87aca9ded21babf9f4342e",
             "messageTitle": "[#471] Fix broken link on ramps (#472)",
             "messageBody": "The link on ramps are broken; the organization and repository name on\r\nthe url links are undefined.\r\n\r\nThis is due the change in #425 where we encapsulate the names in\r\nanother layer of abstraction.\r\n\r\nLet\u0027s fix the property accessors in v_summary.js to restore the broken\r\nhyperlink.\r\n",
-            "tags": [
-              "v1.6.1"
-            ],
             "insertions": 2,
             "deletions": 2
           }
@@ -2371,9 +2314,6 @@
             "hash": "7c06d6928ebf4ca1e1d662c60060c485b2903622",
             "messageTitle": "[#587] Fix unoriented output messages (#593)",
             "messageBody": "Some of the messages used in RepoSense are structurally unoriented.\r\n\r\nThis include the missing transition message where --config flag is\r\nunused, using default path for analysis and the double printing of\r\nthe help message, and the confusing arrangement of usage parameters as\r\nshown in #587.\r\n\r\nLet\u0027s fix these scenarios to improve the quality of our output messages.",
-            "tags": [
-              "v1.8"
-            ],
             "insertions": 105,
             "deletions": 69
           }
@@ -2402,9 +2342,6 @@
             "hash": "0637f4b826428e6565deeca59131f1c9a3637037",
             "messageTitle": "AboutUs: update team members (#867)",
             "messageBody": "As more members join and leave us, it is about time for us to distinct\r\nthe active members so that users can easily seek help from us.\r\n\r\nLet\u0027s move our team list to a new page to separate our active and past\r\nmembers into different section. Also, let\u0027s include and update the\r\nroles to accredit our senior members who have been helping out with\r\nmany of the work, including mentoring the newcomers.",
-            "tags": [
-              "v1.10rc2"
-            ],
             "insertions": 94,
             "deletions": 12
           }
@@ -2413,11 +2350,11 @@
     ]
   },
   "authorFinalContributionMap": {
-    "ongspxm": 718,
-    "jamessspanggg": 1207,
-    "yamidark": 1686,
-    "yong24s": 1840,
-    "eugenepeh": 2278
+    "ongspxm": 722,
+    "jamessspanggg": 1208,
+    "yamidark": 1726,
+    "yong24s": 1851,
+    "eugenepeh": 2308
   },
   "authorFileTypeContributionMap": {
     "ongspxm": {
@@ -2425,7 +2362,7 @@
       "pug": 86,
       "java": 91,
       "js": 392,
-      "md": 64,
+      "md": 68,
       "scss": 80,
       "yml": 0
     },
@@ -2434,7 +2371,7 @@
       "pug": 99,
       "java": 171,
       "js": 381,
-      "md": 36,
+      "md": 37,
       "scss": 519,
       "yml": 1
     },
@@ -2443,7 +2380,7 @@
       "pug": 0,
       "java": 1555,
       "js": 3,
-      "md": 100,
+      "md": 140,
       "scss": 0,
       "yml": 1
     },
@@ -2452,7 +2389,7 @@
       "pug": 0,
       "java": 1646,
       "js": 0,
-      "md": 119,
+      "md": 130,
       "scss": 0,
       "yml": 41
     },
@@ -2461,7 +2398,7 @@
       "pug": 38,
       "java": 1442,
       "js": 350,
-      "md": 185,
+      "md": 215,
       "scss": 225,
       "yml": 30
     }
