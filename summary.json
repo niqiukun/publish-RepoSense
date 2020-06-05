@@ -1,18 +1,30 @@
 {
   "repoSenseVersion": "v1.11",
-  "reportGeneratedTime": "Thu Jun 4 13:17:49 2020 UTC",
-  "reportGenerationTime": " 3.27 second(s)",
-  "repos": [],
-  "errorList": [
+  "reportGeneratedTime": "Fri Jun 5 06:11:11 2020 UTC",
+  "reportGenerationTime": " 8.55 second(s)",
+  "repos": [
     {
-      "repoName": "reposense/RepoSense[master]",
-      "errorMessage": "Failed to clone from https://github.com/reposense/RepoSense.git"
+      "location": {
+        "location": "https://github.com/reposense/RepoSense.git",
+        "repoName": "RepoSense",
+        "organization": "reposense"
+      },
+      "branch": "master",
+      "displayName": "reposense/RepoSense[master]",
+      "outputFolderName": "reposense_RepoSense_master"
     },
     {
-      "repoName": "se-edu/collate[master]",
-      "errorMessage": "Failed to clone from https://github.com/se-edu/collate.git"
+      "location": {
+        "location": "https://github.com/se-edu/collate.git",
+        "repoName": "collate",
+        "organization": "se-edu"
+      },
+      "branch": "master",
+      "displayName": "se-edu/collate[master]",
+      "outputFolderName": "se-edu_collate_master"
     }
   ],
+  "errorList": [],
   "sinceDate": "2017-10-21",
   "untilDate": "2019-11-21",
   "isSinceDateProvided": true,
